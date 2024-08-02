@@ -2,7 +2,7 @@ let jsonData = {};
 let jsonTitle = "Default Title"; // Default title
 
 function updateJsonTitle() {
-    const selectElement = document.getElementById('json-select');
+    const selectElement = document.getElementById('file-list');
     jsonTitle = selectElement.options[selectElement.selectedIndex].text;
     // You can also fetch the JSON data here based on selection
     // e.g., loadData(jsonTitle);
