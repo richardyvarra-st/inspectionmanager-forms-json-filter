@@ -1,0 +1,909 @@
+{
+    "type": "root",
+    "children": [
+        {
+            "identifier": "servicetrade_job_number",
+            "title": "Job Number",
+            "type": "text"
+        },
+        {
+            "identifier": "servicetrade_customer_name",
+            "title": "Customer",
+            "type": "text"
+        },
+        {
+            "identifier": "servicetrade_location_name",
+            "title": "Property Name",
+            "type": "text"
+        },
+        {
+            "identifier": "servicetrade_location_street",
+            "title": "Address of Property",
+            "type": "text"
+        },
+        {
+            "identifier": "servicetrade_location_city",
+            "title": "City",
+            "type": "text"
+        },
+        {
+            "identifier": "servicetrade_location_state",
+            "title": "State",
+            "type": "text"
+        },
+        {
+            "identifier": "servicetrade_location_postal_code",
+            "title": "Zip",
+            "type": "text"
+        },
+        {
+            "identifier": "Date",
+            "title": "Date",
+            "autoIdentifier": true,
+            "type": "date",
+            "initialAnswer_expr": "NOW()"
+        },
+        {
+            "type": "group",
+            "children": [
+                {
+                    "identifier": "Backflow_Installation_Type",
+                    "title": "Backflow Installation Type",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "New"
+                        },
+                        {
+                            "text": "Existing"
+                        },
+                        {
+                            "text": "Replacement"
+                        }
+                    ],
+                    "type": "select",
+                    "initialAnswer_expr": "\"Existing\""
+                },
+                {
+                    "identifier": "Old_Serial__",
+                    "title": "Old Serial #",
+                    "autoIdentifier": true,
+                    "type": "text",
+                    "visible_rule": "when",
+                    "visible_expr": "Backflow_Installation_Type = \"Replacement\""
+                },
+                {
+                    "identifier": "properties_type",
+                    "title": "Assembly Type",
+                    "options": [
+                        {
+                            "text": "Double Check Valve Assembly (DCV)"
+                        },
+                        {
+                            "text": "Double Check Detector Valve Assembly (DCD)"
+                        },
+                        {
+                            "text": "DCDA-II"
+                        },
+                        {
+                            "text": "Reduced Pressure Zone Assembly (RPZ)"
+                        },
+                        {
+                            "text": "Reduced Pressure Detector Assembly (RPD)"
+                        },
+                        {
+                            "text": "Pressure Vacuum Breaker (PVB)"
+                        },
+                        {
+                            "text": "Atmospheric Vacuum Breaker (AVB)"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "properties_location_in_site",
+                    "title": "Location of Assembly",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_manufacturer",
+                    "title": "Manufacturer",
+                    "options": [
+                        {
+                            "text": "Ames"
+                        },
+                        {
+                            "text": "Apollo"
+                        },
+                        {
+                            "text": "Backflow Direct"
+                        },
+                        {
+                            "text": "Buckner"
+                        },
+                        {
+                            "text": "Cash Acme"
+                        },
+                        {
+                            "text": "CLA-VAL"
+                        },
+                        {
+                            "text": "Conbraco"
+                        },
+                        {
+                            "text": "Febco"
+                        },
+                        {
+                            "text": "Flowmatic"
+                        },
+                        {
+                            "text": "Hersey"
+                        },
+                        {
+                            "text": "Hersey No2"
+                        },
+                        {
+                            "text": "ITT Barton"
+                        },
+                        {
+                            "text": "Lawler"
+                        },
+                        {
+                            "text": "Mueller"
+                        },
+                        {
+                            "text": "Neptune"
+                        },
+                        {
+                            "text": "Orion"
+                        },
+                        {
+                            "text": "Rainbird"
+                        },
+                        {
+                            "text": "Unknown"
+                        },
+                        {
+                            "text": "Viking"
+                        },
+                        {
+                            "text": "Watts"
+                        },
+                        {
+                            "text": "Wilkins"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_model",
+                    "title": "Model #",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_serial",
+                    "title": "Serial Number",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_size",
+                    "title": "Size",
+                    "options": [
+                        {
+                            "text": "1/2\""
+                        },
+                        {
+                            "text": "3/4\""
+                        },
+                        {
+                            "text": "3/8\""
+                        },
+                        {
+                            "text": "1\""
+                        },
+                        {
+                            "text": "1 1/4\""
+                        },
+                        {
+                            "text": "1 1/2\""
+                        },
+                        {
+                            "text": "2\""
+                        },
+                        {
+                            "text": "2 1/2\""
+                        },
+                        {
+                            "text": "3\""
+                        },
+                        {
+                            "text": "4\""
+                        },
+                        {
+                            "text": "6\""
+                        },
+                        {
+                            "text": "8\""
+                        },
+                        {
+                            "text": "10\""
+                        },
+                        {
+                            "text": "12\""
+                        },
+                        {
+                            "text": "14\""
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_installation_type",
+                    "title": "Type of Protection",
+                    "options": [
+                        {
+                            "text": "Containment"
+                        },
+                        {
+                            "text": "Isolation"
+                        },
+                        {
+                            "text": "Containment by Isolation"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_application",
+                    "title": "Type of Service",
+                    "options": [
+                        {
+                            "text": "Fireline"
+                        },
+                        {
+                            "text": "Fireline Bypass"
+                        },
+                        {
+                            "text": "Domestic"
+                        },
+                        {
+                            "text": "Irrigation"
+                        },
+                        {
+                            "text": "Equipment"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "Assembly_Orientation",
+                    "title": "Assembly Orientation",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "Horizontal"
+                        },
+                        {
+                            "text": "Vertical Up"
+                        },
+                        {
+                            "text": "Vertical Down"
+                        }
+                    ],
+                    "type": "select"
+                },
+                {
+                    "identifier": "State_of_Backflow_Before_Test",
+                    "title": "State of Backflow Before Test",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "On"
+                        },
+                        {
+                            "text": "Off"
+                        }
+                    ],
+                    "type": "select"
+                },
+                {
+                    "identifier": "Incoming_Line_Pressure",
+                    "title": "Incoming Line Pressure",
+                    "autoIdentifier": true,
+                    "type": "decimal"
+                },
+                {
+                    "type": "group",
+                    "autoIdentifier": true,
+                    "children": [
+                        {
+                            "identifier": "Check_Valve__1",
+                            "title": "Check Valve #1",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Closed Tight"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(OR(OR(OR(.properties_type = \"Double Check Valve Assembly (DCV)\",.properties_type = \"Double Check Detector Valve Assembly (DCD)\"),.properties_type = \"DCDA-II\"),.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\"),.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")",
+                            "hint": "13.6.1.1 The Isolation valves on double check assemblies (DCA) and double check detector assemblies (DCDA) shall be inspected weekly to ensure that the valves are in the normal open position.  13.6.1.1.1 Valves secured with locks or electrically supervised in accordance with applicable NFPA standards shall be inspected monthly."
+                        },
+                        {
+                            "identifier": "______PSID_1",
+                            "title": "@ ___ PSID",
+                            "type": "decimal",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(OR(OR(OR(.properties_type = \"Double Check Valve Assembly (DCV)\",.properties_type = \"Double Check Detector Valve Assembly (DCD)\"),.properties_type = \"DCDA-II\"),.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\"),.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")"
+                        },
+                        {
+                            "identifier": "Check_Valve__2",
+                            "title": "Check Valve #2",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Closed Tight"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(OR(OR(OR(.properties_type = \"Double Check Valve Assembly (DCV)\",.properties_type = \"Double Check Detector Valve Assembly (DCD)\"),.properties_type = \"DCDA-II\"),.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\"),.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")",
+                            "hint": "13.6.1.1 The Isolation valves on double check assemblies (DCA) and double check detector assemblies (DCDA) shall be inspected weekly to ensure that the valves are in the normal open position.  13.6.1.1.1 Valves secured with locks or electrically supervised in accordance with applicable NFPA standards shall be inspected monthly."
+                        },
+                        {
+                            "identifier": "______PSID_2",
+                            "title": "@ ___ PSID",
+                            "type": "decimal",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(OR(OR(OR(.properties_type = \"Double Check Valve Assembly (DCV)\",.properties_type = \"Double Check Detector Valve Assembly (DCD)\"),.properties_type = \"DCDA-II\"),.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\"),.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")"
+                        },
+                        {
+                            "identifier": "Relief_Valve",
+                            "title": "Relief Valve",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Opened"
+                                },
+                                {
+                                    "text": "Did Not Open"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\",.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")",
+                            "hint": "13.6.1.2.2 RPAs and RPDAs shall be inspected weekly to ensure that the differential-sensing valve relief port is not continuously discharging."
+                        },
+                        {
+                            "identifier": "______PSID_3",
+                            "title": "@ ___ PSID",
+                            "type": "decimal",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\",.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")"
+                        },
+                        {
+                            "identifier": "Buffer",
+                            "title": "Buffer",
+                            "autoIdentifier": true,
+                            "type": "calculated",
+                            "calculate_expr": "ROUND((______PSID_1 - ______PSID_3),1)",
+                            "type_derived": "decimal",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\",.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")"
+                        },
+                        {
+                            "identifier": "Air_Inlet_Valve",
+                            "title": "Air Inlet Valve",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Closed Tight"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Pressure Vacuum Breaker (PVB)\",.properties_type = \"Atmospheric Vacuum Breaker (AVB)\")"
+                        },
+                        {
+                            "identifier": "______PSID_4",
+                            "title": "@ ___ PSID",
+                            "type": "decimal",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Pressure Vacuum Breaker (PVB)\",.properties_type = \"Atmospheric Vacuum Breaker (AVB)\")"
+                        },
+                        {
+                            "identifier": "Check_Valve",
+                            "title": "Check Valve",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Closed Tight"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Pressure Vacuum Breaker (PVB)\",.properties_type = \"Atmospheric Vacuum Breaker (AVB)\")"
+                        },
+                        {
+                            "identifier": "______PSID_5",
+                            "title": "@ ___ PSID",
+                            "type": "decimal",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Pressure Vacuum Breaker (PVB)\",.properties_type = \"Atmospheric Vacuum Breaker (AVB)\")"
+                        },
+                        {
+                            "identifier": "Shut_Off__1",
+                            "title": "Shut Off #1",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Closed Tight"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select"
+                        },
+                        {
+                            "identifier": "Shut_Off__2",
+                            "title": "Shut Off #2",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Closed Tight"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select"
+                        }
+                    ],
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "title": "Initial Test",
+                    "identifier": "Initial_Test"
+                },
+                {
+                    "identifier": "Describe_Parts___Repairs_If_Needed",
+                    "title": "Describe Parts & Repairs If Needed ",
+                    "autoIdentifier": true,
+                    "type": "text"
+                },
+                {
+                    "type": "group",
+                    "autoIdentifier": true,
+                    "children": [
+                        {
+                            "identifier": "Check_Valve__1",
+                            "title": "Check Valve #1",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Closed Tight"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(OR(OR(OR(.properties_type = \"Double Check Valve Assembly (DCV)\",.properties_type = \"Double Check Detector Valve Assembly (DCD)\"),.properties_type = \"DCDA-II\"),.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\"),.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")"
+                        },
+                        {
+                            "identifier": "______PSID_1",
+                            "title": "@ ___ PSID",
+                            "type": "decimal",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(OR(OR(OR(.properties_type = \"Double Check Valve Assembly (DCV)\",.properties_type = \"Double Check Detector Valve Assembly (DCD)\"),.properties_type = \"DCDA-II\"),.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\"),.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")"
+                        },
+                        {
+                            "identifier": "Check_Valve__2",
+                            "title": "Check Valve #2",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Closed Tight"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(OR(OR(OR(.properties_type = \"Double Check Valve Assembly (DCV)\",.properties_type = \"Double Check Detector Valve Assembly (DCD)\"),.properties_type = \"DCDA-II\"),.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\"),.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")"
+                        },
+                        {
+                            "identifier": "______PSID_2",
+                            "title": "@ ___ PSID",
+                            "type": "decimal",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(OR(OR(OR(.properties_type = \"Double Check Valve Assembly (DCV)\",.properties_type = \"Double Check Detector Valve Assembly (DCD)\"),.properties_type = \"DCDA-II\"),.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\"),.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")"
+                        },
+                        {
+                            "identifier": "Relief_Valve",
+                            "title": "Relief Valve",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Opened"
+                                },
+                                {
+                                    "text": "Did Not Open"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\",.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")"
+                        },
+                        {
+                            "identifier": "______PSID_3",
+                            "title": "@ ___ PSID",
+                            "type": "decimal",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\",.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")"
+                        },
+                        {
+                            "identifier": "Buffer",
+                            "title": "Buffer",
+                            "autoIdentifier": true,
+                            "type": "calculated",
+                            "calculate_expr": "ROUND((______PSID_1 - ______PSID_3),1)",
+                            "type_derived": "decimal",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Reduced Pressure Zone Assembly (RPZ)\",.properties_type = \"Reduced Pressure Detector Assembly (RPD)\")"
+                        },
+                        {
+                            "identifier": "Air_Inlet_Valve",
+                            "title": "Air Inlet Valve",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Closed Tight"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Pressure Vacuum Breaker (PVB)\",.properties_type = \"Atmospheric Vacuum Breaker (AVB)\")"
+                        },
+                        {
+                            "identifier": "______PSID_4",
+                            "title": "@ ___ PSID",
+                            "type": "decimal",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Pressure Vacuum Breaker (PVB)\",.properties_type = \"Atmospheric Vacuum Breaker (AVB)\")"
+                        },
+                        {
+                            "identifier": "Check_Valve",
+                            "title": "Check Valve",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Closed Tight"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Pressure Vacuum Breaker (PVB)\",.properties_type = \"Atmospheric Vacuum Breaker (AVB)\")"
+                        },
+                        {
+                            "identifier": "______PSID_5",
+                            "title": "@ ___ PSID",
+                            "type": "decimal",
+                            "visible_rule": "when",
+                            "visible_expr": "OR(.properties_type = \"Pressure Vacuum Breaker (PVB)\",.properties_type = \"Atmospheric Vacuum Breaker (AVB)\")"
+                        },
+                        {
+                            "identifier": "Shut_Off__1",
+                            "title": "Shut Off #1",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Closed Tight"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select"
+                        },
+                        {
+                            "identifier": "Shut_Off__2",
+                            "title": "Shut Off #2",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Closed Tight"
+                                },
+                                {
+                                    "text": "Leaked"
+                                }
+                            ],
+                            "type": "select"
+                        }
+                    ],
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "title": "Retest",
+                    "identifier": "Retest"
+                },
+                {
+                    "identifier": "Test_Completed",
+                    "title": "Test Completed",
+                    "autoIdentifier": true,
+                    "type": "date"
+                },
+                {
+                    "identifier": "State_of_Backflow_After_Test",
+                    "title": "State of Backflow After Test",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "On"
+                        },
+                        {
+                            "text": "Off"
+                        }
+                    ],
+                    "type": "select"
+                },
+                {
+                    "identifier": "Test_Results",
+                    "title": "Test Results",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "Pass"
+                        },
+                        {
+                            "text": "Fail"
+                        }
+                    ],
+                    "type": "select"
+                },
+                {
+                    "identifier": "Comments",
+                    "title": "Comments",
+                    "autoIdentifier": true,
+                    "type": "text",
+                    "multi_line": true
+                },
+                {
+                    "type": "group",
+                    "autoIdentifier": true,
+                    "children": [
+                        {
+                            "identifier": "severity",
+                            "title": "Severity",
+                            "options": [
+                                {
+                                    "text": "suggested"
+                                },
+                                {
+                                    "text": "deficient"
+                                },
+                                {
+                                    "text": "inoperable"
+                                }
+                            ],
+                            "type": "select",
+                            "required_rule": "always"
+                        },
+                        {
+                            "identifier": "Deficiency_Description",
+                            "title": "Deficiency Description",
+                            "autoIdentifier": true,
+                            "options": [
+                                {
+                                    "text": "Abnormal rubber disc wear or cuts"
+                                },
+                                {
+                                    "text": "Air entrapment"
+                                },
+                                {
+                                    "text": "Copper filings, solder or pipe dope present"
+                                },
+                                {
+                                    "text": "Diaphragm failure"
+                                },
+                                {
+                                    "text": "Disc retainer fractured or worn"
+                                },
+                                {
+                                    "text": "Frozen BFP"
+                                },
+                                {
+                                    "text": "Guide mechanism"
+                                },
+                                {
+                                    "text": "Kinking of external sensing line"
+                                },
+                                {
+                                    "text": "Obstructed sending line"
+                                },
+                                {
+                                    "text": "Test cocks missing"
+                                },
+                                {
+                                    "text": "Foreign matter"
+                                },
+                                {
+                                    "text": "Other"
+                                }
+                            ],
+                            "type": "select",
+                            "required_rule": "always"
+                        },
+                        {
+                            "identifier": "Other_Description",
+                            "title": "Other Description",
+                            "autoIdentifier": true,
+                            "type": "text",
+                            "required_rule": "always",
+                            "multi_line": true,
+                            "visible_rule": "when",
+                            "visible_expr": "Deficiency_Description = \"Other\""
+                        },
+                        {
+                            "type": "group",
+                            "autoIdentifier": true,
+                            "children": [
+                                {
+                                    "identifier": "Take_a_picture_of_the_issue",
+                                    "title": "Take a picture of the issue",
+                                    "autoIdentifier": true,
+                                    "type": "image"
+                                }
+                            ],
+                            "title": "Deficiency Photos",
+                            "identifier": "Deficiency_Photos"
+                        },
+                        {
+                            "identifier": "description",
+                            "title": "Description Calculation",
+                            "type": "calculated",
+                            "visible_rule": "when",
+                            "calculate_expr": "IF(NOTBLANK(Other_Description),Other_Description,Deficiency_Description)",
+                            "type_derived": "text",
+                            "hidden": true,
+                            "visible_expr": "NOTBLANK(Deficiency_Description)"
+                        }
+                    ],
+                    "title": "Deficiencies",
+                    "identifier": "Deficiencies"
+                },
+                {
+                    "identifier": "asset_id",
+                    "title": "Asset ID",
+                    "type": "text",
+                    "readonly_rule": "always",
+                    "hidden": true
+                },
+                {
+                    "identifier": "Asset_Number",
+                    "title": "Asset Number",
+                    "autoIdentifier": true,
+                    "type": "calculated",
+                    "calculate_expr": "INDEX_OF(asset_id) + 1",
+                    "type_derived": "integer",
+                    "hidden": true
+                }
+            ],
+            "title": "Backflows",
+            "identifier": "servicetrade_assets_backflow"
+        },
+        {
+            "identifier": "Gauge_Test_Kit_Manufacturer",
+            "title": "Gauge Test Kit Manufacturer",
+            "autoIdentifier": true,
+            "type": "text"
+        },
+        {
+            "identifier": "Gauge_Test_Kit_Model",
+            "title": "Gauge Test Kit Model",
+            "autoIdentifier": true,
+            "type": "text"
+        },
+        {
+            "identifier": "Gauge_Test_Kit_Serial__",
+            "title": "Gauge Test Kit Serial #",
+            "autoIdentifier": true,
+            "type": "text"
+        },
+        {
+            "identifier": "Gauge_Test_Kit_Calibration_Date",
+            "title": "Gauge Test Kit Calibration Date",
+            "autoIdentifier": true,
+            "type": "date"
+        },
+        {
+            "identifier": "servicetrade_tech_name",
+            "title": "Technician",
+            "type": "text"
+        },
+        {
+            "identifier": "Certification",
+            "title": "Certification",
+            "autoIdentifier": true,
+            "type": "text"
+        },
+        {
+            "identifier": "Technician_Signature",
+            "title": "Technician Signature",
+            "autoIdentifier": true,
+            "type": "signature"
+        },
+        {
+            "identifier": "Customer",
+            "title": "Customer",
+            "autoIdentifier": true,
+            "type": "text"
+        },
+        {
+            "identifier": "Customer_Signature",
+            "title": "Customer Signature",
+            "autoIdentifier": true,
+            "type": "signature"
+        },
+        {
+            "identifier": "servicetrade_job_id",
+            "title": "Job ID",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        },
+        {
+            "identifier": "Backflow_Count",
+            "title": "Backflow Count",
+            "autoIdentifier": true,
+            "type": "calculated",
+            "hidden": true,
+            "calculate_expr": "COUNT(servicetrade_assets_backflow)",
+            "type_derived": "integer"
+        },
+        {
+            "identifier": "servicetrade_technician_id",
+            "title": "Technician ID",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        }
+    ],
+    "title": "NFPA 25 Backflow Prevention Assembly Test 2014 ed.",
+    "description": "Will be used in Standard Forms Library"
+}

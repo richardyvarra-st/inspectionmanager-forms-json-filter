@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Filter and Export</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+</head>
+<body>
+    <h1>Inspection Manager JSON Filter</h1>
+    <div class="search-container">
+    <input type="text" id="search-bar" placeholder="Enter keyword to search JSON file">
+    <button type="button" class="btn btn-primary" onclick="searchJSON()" type="button" class="btn btn-primary">Search</button>
+    <select id="file-list" onchange="loadSelectedFile()"></select>
+    <button onclick="exportToExcel()">Export to Excel</button>
+    </div>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Identifier</th>
+                <th>Title</th>
+                <th>Required Rule</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+   
+</body>
+</html>

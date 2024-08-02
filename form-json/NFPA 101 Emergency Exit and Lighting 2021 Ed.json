@@ -1,0 +1,543 @@
+{
+    "type": "root",
+    "children": [
+        {
+            "identifier": "servicetrade_job_number",
+            "title": "ServiceTrade Job Number",
+            "type": "text",
+            "readonly_rule": "always"
+        },
+        {
+            "identifier": "Inspection_Date",
+            "title": "Inspection Date",
+            "autoIdentifier": true,
+            "type": "date",
+            "initialAnswer_expr": "NOW()"
+        },
+        {
+            "type": "group",
+            "autoIdentifier": true,
+            "children": [
+                {
+                    "identifier": "Name",
+                    "title": "Name",
+                    "autoIdentifier": true,
+                    "type": "text"
+                },
+                {
+                    "identifier": "Address",
+                    "title": "Address",
+                    "autoIdentifier": true,
+                    "type": "text"
+                },
+                {
+                    "identifier": "City",
+                    "title": "City",
+                    "autoIdentifier": true,
+                    "type": "text"
+                },
+                {
+                    "identifier": "State",
+                    "title": "State",
+                    "autoIdentifier": true,
+                    "type": "text"
+                },
+                {
+                    "identifier": "Zip",
+                    "title": "Zip",
+                    "autoIdentifier": true,
+                    "type": "text"
+                },
+                {
+                    "identifier": "Phone",
+                    "title": "Phone",
+                    "autoIdentifier": true,
+                    "type": "phone_number"
+                }
+            ],
+            "minOccurs": 1,
+            "maxOccurs": 1,
+            "title": "Inspection Location",
+            "identifier": "Inspection_Location"
+        },
+        {
+            "type": "group",
+            "autoIdentifier": true,
+            "children": [
+                {
+                    "identifier": "Name",
+                    "title": "Name",
+                    "autoIdentifier": true,
+                    "type": "text"
+                },
+                {
+                    "identifier": "Address",
+                    "title": "Address",
+                    "autoIdentifier": true,
+                    "type": "text"
+                },
+                {
+                    "identifier": "City",
+                    "title": "City",
+                    "autoIdentifier": true,
+                    "type": "text"
+                },
+                {
+                    "identifier": "State",
+                    "title": "State",
+                    "autoIdentifier": true,
+                    "type": "text"
+                },
+                {
+                    "identifier": "Zip",
+                    "title": "Zip",
+                    "autoIdentifier": true,
+                    "type": "text"
+                },
+                {
+                    "identifier": "Phone",
+                    "title": "Phone",
+                    "autoIdentifier": true,
+                    "type": "phone_number"
+                }
+            ],
+            "minOccurs": 1,
+            "maxOccurs": 1,
+            "title": "Customer Information",
+            "identifier": "Customer_Information"
+        },
+        {
+            "identifier": "Is_this_inspection_for_a_hospital_",
+            "title": "Is this inspection for a hospital?",
+            "autoIdentifier": true,
+            "type": "boolean",
+            "required_rule": "always"
+        },
+        {
+            "identifier": "Inspection_Type",
+            "title": "Inspection Frequency",
+            "options": [
+                {
+                    "text": "Monthly"
+                },
+                {
+                    "text": "Annual"
+                }
+            ],
+            "type": "select",
+            "required_rule": "always",
+            "hint": "Select inspection frequency of visit."
+        },
+        {
+            "type": "group",
+            "children": [
+                {
+                    "identifier": "properties_elight_type",
+                    "title": "Type",
+                    "options": [
+                        {
+                            "text": "Egress Light"
+                        },
+                        {
+                            "text": "Emergency Light on Emergency Power"
+                        },
+                        {
+                            "text": "Emergency Light w/Battery"
+                        },
+                        {
+                            "text": "Emergency Light w/Battery Self-Test/Diagnostic"
+                        },
+                        {
+                            "text": "Exit Light on Emergency Power"
+                        },
+                        {
+                            "text": "Exit Light w/Emer. Battery Power Self-Test/Diagnostic"
+                        },
+                        {
+                            "text": "Exit Light w/Emergency Battery Power"
+                        },
+                        {
+                            "text": "Exit Sign - Outlet Power"
+                        },
+                        {
+                            "text": "Exit Sign - Photoluminescent"
+                        },
+                        {
+                            "text": "Exit Sign & Emergency Light - Self-Test/Diagnostic"
+                        },
+                        {
+                            "text": "Exit Sign & Emergency Light w/Battery"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "properties_area",
+                    "title": "Area",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_location_in_site",
+                    "title": "Location",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_manufacturer",
+                    "title": "Manufacturer",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_model",
+                    "title": "Model Number",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_serial",
+                    "title": "Serial #",
+                    "type": "text"
+                },
+                {
+                    "identifier": "properties_barcode",
+                    "title": "Barcode",
+                    "type": "barcode",
+                    "timestamp": true,
+                    "allow_manual_override": true
+                },
+                {
+                    "identifier": "Visual_Inspection",
+                    "title": "Visual Inspection",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "Pass"
+                        },
+                        {
+                            "text": "Fail"
+                        },
+                        {
+                            "text": "N/A"
+                        },
+                        {
+                            "text": "N/I"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "hint": "7.9.3.1.1  Visual inspection - System appears to be in good condition, free of damage, and mounted properly."
+                },
+                {
+                    "type": "group",
+                    "children": [
+                        {
+                            "identifier": "severity",
+                            "title": "Severity",
+                            "options": [
+                                {
+                                    "text": "suggested"
+                                },
+                                {
+                                    "text": "deficient"
+                                },
+                                {
+                                    "text": "inoperable"
+                                }
+                            ],
+                            "type": "select",
+                            "required_rule": "always"
+                        },
+                        {
+                            "identifier": "description",
+                            "title": "Description of the Issue",
+                            "type": "text",
+                            "required_rule": "always",
+                            "multi_line": true
+                        },
+                        {
+                            "type": "group",
+                            "autoIdentifier": true,
+                            "children": [
+                                {
+                                    "identifier": "deficiency_image",
+                                    "title": "Take a picture of the issue",
+                                    "type": "image"
+                                }
+                            ],
+                            "title": "Deficiency Photos",
+                            "identifier": "Deficiency_Photos"
+                        }
+                    ],
+                    "title": "Deficiencies",
+                    "identifier": "Deficiencies_visual_insp",
+                    "visible_rule": "when",
+                    "visible_expr": ".Visual_Inspection = \"Fail\"",
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "_30_Sec__Test",
+                    "title": "30 Sec. Test",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "Pass"
+                        },
+                        {
+                            "text": "Fail"
+                        },
+                        {
+                            "text": "N/A"
+                        },
+                        {
+                            "text": "N/I"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "hint": "7.9.3.1.1(1)  Functional testing shall be conducted monthly, with a minimum of 3 weeks and a maximum of 5 weeks between tests, for not less than 30 seconds, except as otherwise permitted by 7.9.3.1.1(2).   7.9.3.1.1(2)  The test interval shall be permitted to be extended beyond 30 days with the approval of the authority having jurisdiction.",
+                    "visible_rule": "when",
+                    "visible_expr": "OR(OR(OR(properties_elight_type <> \"Emergency Light on Emergency Power\",properties_elight_type <> \"Exit Light w/Emer. Battery Power Self-Test/Diagnostic\"),properties_elight_type <> \"Exit Sign & Emergency Light - Self-Test/Diagnostic\"),properties_elight_type <> \"Emergency Light w/Battery Self-Test/Diagnostic\")"
+                },
+                {
+                    "type": "group",
+                    "children": [
+                        {
+                            "identifier": "severity",
+                            "title": "Severity",
+                            "options": [
+                                {
+                                    "text": "suggested"
+                                },
+                                {
+                                    "text": "deficient"
+                                },
+                                {
+                                    "text": "inoperable"
+                                }
+                            ],
+                            "type": "select",
+                            "required_rule": "always"
+                        },
+                        {
+                            "identifier": "description",
+                            "title": "Description of the Issue",
+                            "type": "text",
+                            "required_rule": "always",
+                            "multi_line": true
+                        },
+                        {
+                            "type": "group",
+                            "autoIdentifier": true,
+                            "children": [
+                                {
+                                    "identifier": "deficiency_image",
+                                    "title": "Take a picture of the issue",
+                                    "type": "image"
+                                }
+                            ],
+                            "title": "Deficiency Photos",
+                            "identifier": "Deficiency_Photos"
+                        }
+                    ],
+                    "title": "Deficiencies",
+                    "identifier": "Deficiencies_30_Sec__Test",
+                    "visible_rule": "when",
+                    "required_rule": "always",
+                    "visible_expr": "._30_Sec__Test = \"Fail\""
+                },
+                {
+                    "identifier": "_1___hr__test",
+                    "title": "1 ½ hr. test",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "Pass"
+                        },
+                        {
+                            "text": "Fail"
+                        },
+                        {
+                            "text": "N/A"
+                        },
+                        {
+                            "text": "N/I"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "visible_rule": "when",
+                    "visible_expr": ".Inspection_Type = \"Annual\"",
+                    "hint": "7.9.3.1.1(3) Functional testing shall be conducted annually for a minimum of 11/2 hours if the emergency lighting system is battery powered.",
+                    "required_rule": "always"
+                },
+                {
+                    "type": "group",
+                    "children": [
+                        {
+                            "identifier": "severity",
+                            "title": "Severity",
+                            "options": [
+                                {
+                                    "text": "suggested"
+                                },
+                                {
+                                    "text": "deficient"
+                                },
+                                {
+                                    "text": "inoperable"
+                                }
+                            ],
+                            "type": "select",
+                            "required_rule": "when",
+                            "required_expr": "OR(NOTBLANK(description),NOTBLANK(Deficiency_Photos.deficiency_image))"
+                        },
+                        {
+                            "identifier": "description",
+                            "title": "Description of the Issue",
+                            "type": "text",
+                            "required_rule": "when",
+                            "multi_line": true,
+                            "required_expr": "OR(NOTBLANK(severity),NOTBLANK(Deficiency_Photos.deficiency_image))"
+                        },
+                        {
+                            "type": "group",
+                            "autoIdentifier": true,
+                            "children": [
+                                {
+                                    "identifier": "deficiency_image",
+                                    "title": "Take a picture of the issue",
+                                    "type": "image"
+                                }
+                            ],
+                            "title": "Deficiency Photos",
+                            "identifier": "Deficiency_Photos"
+                        }
+                    ],
+                    "title": "Deficiencies",
+                    "identifier": "Deficiencies_1_hr_test",
+                    "visible_rule": "when",
+                    "required_rule": "always",
+                    "visible_expr": "._1___hr__test = \"Fail\""
+                },
+                {
+                    "identifier": "asset_id",
+                    "title": "Asset ID",
+                    "type": "text",
+                    "readonly_rule": "always",
+                    "hidden": true
+                }
+            ],
+            "title": "Emergency Exit and Lighting",
+            "identifier": "servicetrade_assets_elight"
+        },
+        {
+            "identifier": "Comments___Recommendations",
+            "title": "Comments / Recommendations",
+            "autoIdentifier": true,
+            "type": "text",
+            "multi_line": true
+        },
+        {
+            "identifier": "Liability_Release_Statement",
+            "title": "Liability Release Statement",
+            "type": "calculated",
+            "calculate_expr": "\"The owner and/or designated representative acknowledges the responsibility of the operating condition of the component parts at the time of this inspection. It is agreed that the inspection service provided by the contractor as prescribed herein is limited to performing a visual inspection and/or routine testing, and any investigation or unscheduled testing, modification, maintenance, repair, etc., of the component parts is not included as part of the inspection work performed. It is further understood that all information contained herein is provided to the best of the knowledge of the party providing such information.\"",
+            "type_derived": "text"
+        },
+        {
+            "identifier": "Customer_Signature",
+            "title": "Customer Signature",
+            "autoIdentifier": true,
+            "type": "signature",
+            "hint": ""
+        },
+        {
+            "identifier": "Customer_Name",
+            "title": "Customer Name",
+            "autoIdentifier": true,
+            "type": "text"
+        },
+        {
+            "identifier": "Technician_Signature",
+            "title": "Technician Signature",
+            "autoIdentifier": true,
+            "type": "signature"
+        },
+        {
+            "identifier": "servicetrade_technician_name",
+            "title": "Technician Name",
+            "type": "text",
+            "timestamp": true
+        },
+        {
+            "identifier": "Technician_License",
+            "title": "Technician License",
+            "autoIdentifier": true,
+            "type": "text",
+            "hint": "Add Tech License.  If multiple licenses, separate with comma."
+        },
+        {
+            "identifier": "servicetrade_job_id",
+            "title": "ServiceTrade Job ID",
+            "type": "text",
+            "readonly_rule": "always",
+            "initialAnswer": "",
+            "hidden": true
+        },
+        {
+            "identifier": "servicetrade_technician_id",
+            "title": "ServiceTrade Tech ID",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        },
+        {
+            "identifier": "Office_License",
+            "title": "Office License",
+            "autoIdentifier": true,
+            "type": "text",
+            "readonly_rule": "always",
+            "hint": "Contractor's License #, will display on cover sheet"
+        },
+        {
+            "identifier": "servicetrade_brand_logo",
+            "title": "Office Logo",
+            "type": "image",
+            "readonly_rule": "always"
+        },
+        {
+            "identifier": "servicetrade_office_address_street",
+            "title": "Office Address",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        },
+        {
+            "identifier": "servicetrade_office_address_city",
+            "title": "Office City",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        },
+        {
+            "identifier": "servicetrade_office_address_state",
+            "title": "Office State",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        },
+        {
+            "identifier": "servicetrade_office_address_postal_code",
+            "title": "Office Zip Code",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        }
+    ],
+    "title": "NFPA 101 Emergency Exit and Lighting 2021 Ed",
+    "description": "DO NOT EDIT - Final Version 6/14/24"
+}

@@ -1,0 +1,1402 @@
+{
+    "type": "root",
+    "children": [
+        {
+            "identifier": "servicetrade_job_number",
+            "title": "ServiceTrade Job Number",
+            "type": "text"
+        },
+        {
+            "identifier": "Inspection_Date",
+            "title": "Inspection Date",
+            "autoIdentifier": true,
+            "type": "date",
+            "initialAnswer_expr": "NOW()",
+            "required_rule": "always"
+        },
+        {
+            "type": "group",
+            "autoIdentifier": true,
+            "children": [
+                {
+                    "identifier": "servicetrade_location_name",
+                    "title": "Name",
+                    "type": "text"
+                },
+                {
+                    "identifier": "servicetrade_location_street",
+                    "title": "Address",
+                    "type": "text"
+                },
+                {
+                    "identifier": "servicetrade_location_city",
+                    "title": "City",
+                    "type": "text"
+                },
+                {
+                    "identifier": "servicetrade_location_state",
+                    "title": "State",
+                    "type": "text"
+                },
+                {
+                    "identifier": "servicetrade_location_postal_code",
+                    "title": "Zip",
+                    "type": "text"
+                }
+            ],
+            "minOccurs": 1,
+            "maxOccurs": 1,
+            "title": "Inspection conducted at Location",
+            "identifier": "Inspection_conducted_at_Location"
+        },
+        {
+            "type": "group",
+            "autoIdentifier": true,
+            "children": [
+                {
+                    "identifier": "servicetrade_customer_name",
+                    "title": "Name",
+                    "type": "text"
+                },
+                {
+                    "identifier": "servicetrade_customer_street",
+                    "title": "Address",
+                    "type": "text"
+                },
+                {
+                    "identifier": "servicetrade_customer_city",
+                    "title": "City",
+                    "type": "text"
+                },
+                {
+                    "identifier": "servicetrade_customer_state",
+                    "title": "State",
+                    "type": "text"
+                },
+                {
+                    "identifier": "servicetrade_customer_postal_code",
+                    "title": "Zip",
+                    "type": "text"
+                }
+            ],
+            "minOccurs": 1,
+            "maxOccurs": 1,
+            "title": "For Customer",
+            "identifier": "For_Customer"
+        },
+        {
+            "identifier": "Is_this_a_hospital_",
+            "title": "Is this inspection for a hospital?",
+            "type": "boolean",
+            "required_rule": "always"
+        },
+        {
+            "identifier": "Inspection_Type",
+            "title": "Inspection Frequency",
+            "options": [
+                {
+                    "text": "Monthly"
+                },
+                {
+                    "text": "Annual"
+                }
+            ],
+            "type": "select",
+            "required_rule": "always"
+        },
+        {
+            "identifier": "What_type_of_extinguisher_s__are_being_inspected_",
+            "title": "What type of extinguisher(s) are being inspected?",
+            "autoIdentifier": true,
+            "options": [
+                {
+                    "text": "Hand Portables"
+                },
+                {
+                    "text": "Wheeled Extinguishers"
+                }
+            ],
+            "type": "select",
+            "multiple": true,
+            "required_rule": "always"
+        },
+        {
+            "type": "group",
+            "children": [
+                {
+                    "identifier": "properties_area",
+                    "title": "Area",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_location_in_site",
+                    "title": "Location",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_extinguisher_type",
+                    "title": "Extinguisher Type",
+                    "options": [
+                        {
+                            "text": "AFFF/FFFP Foam"
+                        },
+                        {
+                            "text": "Antifreeze"
+                        },
+                        {
+                            "text": "CO2"
+                        },
+                        {
+                            "text": "Clean Agent"
+                        },
+                        {
+                            "text": "Dry Chemical"
+                        },
+                        {
+                            "text": "Dry Powder-Class D"
+                        },
+                        {
+                            "text": "ABC"
+                        },
+                        {
+                            "text": "BC"
+                        },
+                        {
+                            "text": "Intergen"
+                        },
+                        {
+                            "text": "FE 36"
+                        },
+                        {
+                            "text": "Halon"
+                        },
+                        {
+                            "text": "Halotron"
+                        },
+                        {
+                            "text": "K Class"
+                        },
+                        {
+                            "text": "Met-L-X"
+                        },
+                        {
+                            "text": "Purple K"
+                        },
+                        {
+                            "text": "Water"
+                        },
+                        {
+                            "text": "Alcohol Resistant Foam"
+                        },
+                        {
+                            "text": "Water Mist"
+                        },
+                        {
+                            "text": "Wetting agent"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "properties_size",
+                    "title": "Size",
+                    "options": [
+                        {
+                            "text": "2 lb"
+                        },
+                        {
+                            "text": "2.5 lb"
+                        },
+                        {
+                            "text": "2.5 gal"
+                        },
+                        {
+                            "text": "2.75 lb"
+                        },
+                        {
+                            "text": "4 lb"
+                        },
+                        {
+                            "text": "4.25 lb"
+                        },
+                        {
+                            "text": "4.5 lb"
+                        },
+                        {
+                            "text": "5 lb"
+                        },
+                        {
+                            "text": "5.5 lb"
+                        },
+                        {
+                            "text": "6 liter"
+                        },
+                        {
+                            "text": "6 lb"
+                        },
+                        {
+                            "text": "8 lb"
+                        },
+                        {
+                            "text": "9 lb"
+                        },
+                        {
+                            "text": "9.5 lb"
+                        },
+                        {
+                            "text": "10 lb"
+                        },
+                        {
+                            "text": "11 lb"
+                        },
+                        {
+                            "text": "13 lb"
+                        },
+                        {
+                            "text": "14 lb"
+                        },
+                        {
+                            "text": "15 lb"
+                        },
+                        {
+                            "text": "15.5 lb"
+                        },
+                        {
+                            "text": "20 lb"
+                        },
+                        {
+                            "text": "30 lb"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "properties_serial",
+                    "title": "Serial Number",
+                    "type": "barcode",
+                    "timestamp": true,
+                    "required_rule": "always",
+                    "allow_manual_override": true
+                },
+                {
+                    "identifier": "properties_manufacturer",
+                    "title": "Manufacturer",
+                    "options": [
+                        {
+                            "text": "Advantage"
+                        },
+                        {
+                            "text": "Amerex"
+                        },
+                        {
+                            "text": "Ansul"
+                        },
+                        {
+                            "text": "Badger"
+                        },
+                        {
+                            "text": "Buckeye"
+                        },
+                        {
+                            "text": "Chubb"
+                        },
+                        {
+                            "text": "FireMaster"
+                        },
+                        {
+                            "text": "First Alert"
+                        },
+                        {
+                            "text": "Guardian"
+                        },
+                        {
+                            "text": "JL Industries"
+                        },
+                        {
+                            "text": "Kidde"
+                        },
+                        {
+                            "text": "Minimax"
+                        },
+                        {
+                            "text": "Pem-All"
+                        },
+                        {
+                            "text": "Potter Roemer"
+                        },
+                        {
+                            "text": "Pyrene"
+                        },
+                        {
+                            "text": "Pyro Chem"
+                        },
+                        {
+                            "text": "Siemens"
+                        },
+                        {
+                            "text": "StaySafe"
+                        },
+                        {
+                            "text": "Strike First"
+                        },
+                        {
+                            "text": "Tyco"
+                        },
+                        {
+                            "text": "Victory"
+                        },
+                        {
+                            "text": "Heiser"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_manufacture_date",
+                    "title": "Manufacture Date",
+                    "type": "date",
+                    "timestamp": true,
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "status",
+                    "title": "Status",
+                    "options": [
+                        {
+                            "text": "active"
+                        },
+                        {
+                            "text": "inactive"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "hint": "Only deactivate if no longer part of inspection",
+                    "initialAnswer": "active",
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "Monthly_Inspection",
+                    "title": "Monthly Inspection",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "Pass"
+                        },
+                        {
+                            "text": "Fail"
+                        },
+                        {
+                            "text": "N/I"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "hint": "7.2.2 Inspection Procedures. Periodic inspection or electronic monitoring of fire extinguishers shall include a check of at least the following items:   (1) Location in designated place   (2) Visibility of the extinguisher or means of indicating the extinguisher location   (3) Access to the extinguisher  (4) Pressure gauge reading or indicator in the operable range or position   (5) Fullness determined by weighing or hefting",
+                    "required_rule": "always",
+                    "visible_rule": "when",
+                    "visible_expr": "status = \"active\""
+                },
+                {
+                    "type": "group",
+                    "children": [
+                        {
+                            "identifier": "severity",
+                            "title": "Severity",
+                            "options": [
+                                {
+                                    "text": "suggested"
+                                },
+                                {
+                                    "text": "deficient"
+                                },
+                                {
+                                    "text": "inoperable"
+                                }
+                            ],
+                            "type": "select",
+                            "required_rule": "when",
+                            "required_expr": "NOTBLANK(description)"
+                        },
+                        {
+                            "identifier": "description",
+                            "title": "Description of the Issue",
+                            "type": "text",
+                            "multi_line": true,
+                            "required_rule": "when",
+                            "required_expr": "NOTBLANK(severity)"
+                        },
+                        {
+                            "type": "group",
+                            "autoIdentifier": true,
+                            "children": [
+                                {
+                                    "identifier": "deficiency_image",
+                                    "title": "Take a picture of the issue",
+                                    "type": "image"
+                                }
+                            ],
+                            "title": "Photos",
+                            "identifier": "Photos"
+                        }
+                    ],
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "title": "Deficiencies",
+                    "identifier": "Deficiencies_Monthly",
+                    "visible_rule": "when",
+                    "visible_expr": ".Monthly_Inspection = \"Fail\""
+                },
+                {
+                    "identifier": "Annual_Maintenance",
+                    "title": "Annual Maintenance",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "Pass"
+                        },
+                        {
+                            "text": "Fail"
+                        },
+                        {
+                            "text": "N/I"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "visible_rule": "when",
+                    "visible_expr": "AND(.Inspection_Type = \"Annual\",status = \"active\")",
+                    "hint": "7.3.2.1  An annual external visual examination of all fire extinguishers shall be made to detect obvious physical damage, corrosion, or nozzle blockage to verify that the operating instructions are present, legible, and facing forward, and that the HMIS information is present and legible, and to determine if a 6-year interval examination or hydrostatic test is due.   7.3.2.2 Seals or Tamper Indicators. At the time of the maintenance, the tamper seal of a rechargeable fire extinguisher shall be removed by operating the pull pin or locking device.   7.3.2.2.1 After the applicable maintenance procedures are completed, a new listed tamper seal shall be installed.",
+                    "required_rule": "always"
+                },
+                {
+                    "type": "group",
+                    "children": [
+                        {
+                            "identifier": "severity",
+                            "title": "Severity",
+                            "options": [
+                                {
+                                    "text": "suggested"
+                                },
+                                {
+                                    "text": "deficient"
+                                },
+                                {
+                                    "text": "inoperable"
+                                }
+                            ],
+                            "type": "select",
+                            "required_rule": "when",
+                            "required_expr": "NOTBLANK(description)"
+                        },
+                        {
+                            "identifier": "description",
+                            "title": "Description of the Issue",
+                            "type": "text",
+                            "multi_line": true,
+                            "required_rule": "when",
+                            "required_expr": "NOTBLANK(severity)"
+                        },
+                        {
+                            "type": "group",
+                            "autoIdentifier": true,
+                            "children": [
+                                {
+                                    "identifier": "deficiency_image",
+                                    "title": "Take a picture of the issue",
+                                    "type": "image"
+                                }
+                            ],
+                            "title": "Photos",
+                            "identifier": "Photos"
+                        }
+                    ],
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "title": "Deficiencies",
+                    "identifier": "Deficiencies_Annual_Maintenance",
+                    "visible_rule": "when",
+                    "visible_expr": ".Annual_Maintenance = \"Fail\""
+                },
+                {
+                    "identifier": "Conductivity_Test",
+                    "title": "Conductivity Test",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "Pass"
+                        },
+                        {
+                            "text": "Fail"
+                        },
+                        {
+                            "text": "N/I"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "visible_rule": "when",
+                    "hint": "For CO2 only.   7.4 Carbon Dioxide Hose Assembly Conductivity Test. A conductivity test shall be conducted annually on all carbon dioxide hose assemblies.  7.4.1 Carbon dioxide hose assemblies that fail the conductivity test shall be replaced.",
+                    "visible_expr": "AND(AND(properties_extinguisher_type = \"CO2\",.Inspection_Type = \"Annual\"),status = \"active\")",
+                    "required_rule": "always"
+                },
+                {
+                    "type": "group",
+                    "children": [
+                        {
+                            "identifier": "severity",
+                            "title": "Severity",
+                            "options": [
+                                {
+                                    "text": "suggested"
+                                },
+                                {
+                                    "text": "deficient"
+                                },
+                                {
+                                    "text": "inoperable"
+                                }
+                            ],
+                            "type": "select",
+                            "required_rule": "when",
+                            "required_expr": "NOTBLANK(description)"
+                        },
+                        {
+                            "identifier": "description",
+                            "title": "Description of the Issue",
+                            "type": "text",
+                            "multi_line": true,
+                            "required_rule": "when",
+                            "required_expr": "NOTBLANK(severity)"
+                        },
+                        {
+                            "type": "group",
+                            "autoIdentifier": true,
+                            "children": [
+                                {
+                                    "identifier": "deficiency_image",
+                                    "title": "Take a picture of the issue",
+                                    "type": "image"
+                                }
+                            ],
+                            "title": "Photos",
+                            "identifier": "Photos"
+                        }
+                    ],
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "title": "Deficiencies",
+                    "identifier": "Deficiencies_Conductivity_Test",
+                    "visible_rule": "when",
+                    "visible_expr": ".Conductivity_Test = \"Fail\""
+                },
+                {
+                    "identifier": "properties_last_12_year_test_date",
+                    "title": "Last 12 Year Hydrostatic Test Date",
+                    "type": "date",
+                    "timestamp": true,
+                    "hint": "If no hydrostatic test has been done due to age of extinguisher, enter manufacture date.",
+                    "visible_rule": "when",
+                    "visible_expr": "OR(OR(OR(OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"Clean Agent\",properties_extinguisher_type = \"Dry Chemical\"),properties_extinguisher_type = \"Dry Powder-Class D\"),properties_extinguisher_type = \"ABC\"),properties_extinguisher_type = \"BC\"),properties_extinguisher_type = \"Intergen\"),properties_extinguisher_type = \"FE 36\"),properties_extinguisher_type = \"Halon\"),properties_extinguisher_type = \"Halotron\"),properties_extinguisher_type = \"Met-L-X\"),properties_extinguisher_type = \"Purple K\")",
+                    "required_rule": "when",
+                    "required_expr": ".Inspection_Type = \"Annual\""
+                },
+                {
+                    "identifier": "properties_last_5_year_hydro_date",
+                    "title": "Last 5 Year Hydrostatic Test Date",
+                    "type": "date",
+                    "timestamp": true,
+                    "hint": "If no hydrostatic test has been done due to age of extinguisher, enter manufacture date.",
+                    "visible_rule": "when",
+                    "visible_expr": "OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"AFFF/FFFP Foam\",properties_extinguisher_type = \"Antifreeze\"),properties_extinguisher_type = \"CO2\"),properties_extinguisher_type = \"Water\"),properties_extinguisher_type = \"Water Mist\"),properties_extinguisher_type = \"Wetting agent\"),properties_extinguisher_type = \"Alcohol Resistant Foam\"),properties_extinguisher_type = \"K Class\")",
+                    "required_rule": "when",
+                    "required_expr": ".Inspection_Type = \"Annual\""
+                },
+                {
+                    "identifier": "properties_last_6_year_test_date",
+                    "title": "Last 6 Year Test Date",
+                    "type": "date",
+                    "timestamp": true,
+                    "hint": "If no 6 year maintenance has been done due to age of extinguisher, enter manufacture date.",
+                    "visible_rule": "when",
+                    "visible_expr": "OR(OR(OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"Clean Agent\",properties_extinguisher_type = \"Dry Chemical\"),properties_extinguisher_type = \"Dry Powder-Class D\"),properties_extinguisher_type = \"ABC\"),properties_extinguisher_type = \"BC\"),properties_extinguisher_type = \"FE 36\"),properties_extinguisher_type = \"Halon\"),properties_extinguisher_type = \"Halotron\"),properties_extinguisher_type = \"Met-L-X\"),properties_extinguisher_type = \"Purple K\")",
+                    "required_rule": "when",
+                    "required_expr": ".Inspection_Type = \"Annual\""
+                },
+                {
+                    "identifier": "Manu_Last_Hydro_Year",
+                    "title": "Manu/Last Hydro Year",
+                    "autoIdentifier": true,
+                    "type": "calculated",
+                    "calculate_expr": "IF(NOTBLANK(properties_last_12_year_test_date),properties_last_12_year_test_date,properties_manufacture_date)",
+                    "type_derived": "date",
+                    "hidden": true
+                },
+                {
+                    "identifier": "_5_Year_Hydro_Due_Date",
+                    "title": "5 Year Hydro Due Date",
+                    "autoIdentifier": true,
+                    "type": "calculated",
+                    "visible_rule": "when",
+                    "calculate_expr": "IF(AND(ISBLANK(properties_last_5_year_hydro_date),NOTBLANK(properties_manufacture_date)),ADDYEARS(properties_manufacture_date,5),IF(NOTBLANK(properties_last_5_year_hydro_date),ADDYEARS(properties_last_5_year_hydro_date,5),\"\"))",
+                    "type_derived": "text",
+                    "visible_expr": "OR(AND(OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"AFFF/FFFP Foam\",properties_extinguisher_type = \"Antifreeze\"),properties_extinguisher_type = \"CO2\"),properties_extinguisher_type = \"K Class\"),properties_extinguisher_type = \"Water\"),properties_extinguisher_type = \"Water Mist\"),properties_extinguisher_type = \"Wetting agent\"),properties_extinguisher_type = \"Alcohol Resistant Foam\"),NOTBLANK(properties_manufacture_date)),NOTBLANK(properties_last_5_year_hydro_date))",
+                    "timestamp": true,
+                    "hidden": true
+                },
+                {
+                    "identifier": "_6_Year_Maintenance_Due_Date",
+                    "title": "6 Year Maintenance Due Date",
+                    "autoIdentifier": true,
+                    "type": "calculated",
+                    "calculate_expr": "IF(AND(ISBLANK(properties_last_6_year_test_date),NOTBLANK(Manu_Last_Hydro_Year)),ADDYEARS(Manu_Last_Hydro_Year,6),IF(AND(NOTBLANK(properties_last_6_year_test_date),NOTBLANK(Manu_Last_Hydro_Year),(YEAR(properties_last_6_year_test_date) <= YEAR(Manu_Last_Hydro_Year))),ADDYEARS(Manu_Last_Hydro_Year,6),IF(AND(NOTBLANK(properties_last_6_year_test_date),NOTBLANK(Manu_Last_Hydro_Year),(YEAR(properties_last_6_year_test_date) > YEAR(Manu_Last_Hydro_Year))),ADDYEARS(properties_last_6_year_test_date,6),\"\")))",
+                    "type_derived": "text",
+                    "visible_rule": "when",
+                    "visible_expr": "OR(AND(OR(OR(OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"Clean Agent\",properties_extinguisher_type = \"Dry Chemical\"),properties_extinguisher_type = \"Dry Powder-Class D\"),properties_extinguisher_type = \"ABC\"),properties_extinguisher_type = \"BC\"),properties_extinguisher_type = \"Halon\"),properties_extinguisher_type = \"Halotron\"),properties_extinguisher_type = \"Met-L-X\"),properties_extinguisher_type = \"Purple K\"),properties_extinguisher_type = \"Intergen\"),NOTBLANK(Manu_Last_Hydro_Year)),NOTBLANK(properties_last_6_year_test_date))",
+                    "timestamp": true,
+                    "hidden": true
+                },
+                {
+                    "identifier": "_12_Hydro_Due_Date",
+                    "title": "12 Hydro Due Date",
+                    "autoIdentifier": true,
+                    "type": "calculated",
+                    "calculate_expr": "ADDYEARS(Manu_Last_Hydro_Year,12)",
+                    "type_derived": "datetime",
+                    "visible_rule": "when",
+                    "visible_expr": "AND(OR(OR(OR(OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"Clean Agent\",properties_extinguisher_type = \"Dry Chemical\"),properties_extinguisher_type = \"Dry Powder-Class D\"),properties_extinguisher_type = \"ABC\"),properties_extinguisher_type = \"BC\"),properties_extinguisher_type = \"FE 36\"),properties_extinguisher_type = \"Halon\"),properties_extinguisher_type = \"Halotron\"),properties_extinguisher_type = \"Met-L-X\"),properties_extinguisher_type = \"Purple K\"),properties_extinguisher_type = \"Intergen\"),NOTBLANK(Manu_Last_Hydro_Year))",
+                    "timestamp": true,
+                    "hidden": true
+                },
+                {
+                    "identifier": "asset_id",
+                    "title": "Asset ID",
+                    "type": "text",
+                    "hidden": true,
+                    "readonly_rule": "always"
+                }
+            ],
+            "title": "Hand Portable Extinguishers",
+            "identifier": "servicetrade_assets_extinguisher",
+            "visible_rule": "when",
+            "visible_expr": "CONTAINS(.What_type_of_extinguisher_s__are_being_inspected_,\"Hand Portables\")"
+        },
+        {
+            "type": "group",
+            "children": [
+                {
+                    "identifier": "properties_area",
+                    "title": "Area",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_location_in_site",
+                    "title": "Location",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_extinguisher_type",
+                    "title": "Extinguisher Type",
+                    "options": [
+                        {
+                            "text": "ABC - Dir Press"
+                        },
+                        {
+                            "text": "ABC - Regulated Press"
+                        },
+                        {
+                            "text": "ABC - St Press"
+                        },
+                        {
+                            "text": "AFFF/FFFP  Dir Press"
+                        },
+                        {
+                            "text": "AFFF/FFFP  St Press"
+                        },
+                        {
+                            "text": "BC - Dir Press"
+                        },
+                        {
+                            "text": "BC - Regulated Press"
+                        },
+                        {
+                            "text": "BC - St Press"
+                        },
+                        {
+                            "text": "CO2"
+                        },
+                        {
+                            "text": "D - Regulated Press"
+                        },
+                        {
+                            "text": "D - St Press"
+                        },
+                        {
+                            "text": "Halon - wheeled"
+                        },
+                        {
+                            "text": "Halotron - wheeled"
+                        },
+                        {
+                            "text": "PK - Dir Press"
+                        },
+                        {
+                            "text": "PK - Regulated Press"
+                        },
+                        {
+                            "text": "PK - St Press"
+                        },
+                        {
+                            "text": "Plus 50C - Dir Press"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "properties_size",
+                    "title": "Size",
+                    "options": [
+                        {
+                            "text": "33 lb"
+                        },
+                        {
+                            "text": "33 gal"
+                        },
+                        {
+                            "text": "40 lb"
+                        },
+                        {
+                            "text": "50 lb"
+                        },
+                        {
+                            "text": "60 lb"
+                        },
+                        {
+                            "text": "65 lb"
+                        },
+                        {
+                            "text": "70 lb"
+                        },
+                        {
+                            "text": "75 lb"
+                        },
+                        {
+                            "text": "80 lb"
+                        },
+                        {
+                            "text": "100 lb"
+                        },
+                        {
+                            "text": "120 lb"
+                        },
+                        {
+                            "text": "125 lb"
+                        },
+                        {
+                            "text": "150 lb"
+                        },
+                        {
+                            "text": "160 lb"
+                        },
+                        {
+                            "text": "250 lb"
+                        },
+                        {
+                            "text": "300 lb"
+                        },
+                        {
+                            "text": "350 lb"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "properties_serial_number",
+                    "title": "Serial Number",
+                    "type": "barcode",
+                    "timestamp": true,
+                    "required_rule": "always",
+                    "allow_manual_override": true
+                },
+                {
+                    "identifier": "properties_manufacturer",
+                    "title": "Manufacturer",
+                    "options": [
+                        {
+                            "text": "Advantage"
+                        },
+                        {
+                            "text": "Amerex"
+                        },
+                        {
+                            "text": "Ansul"
+                        },
+                        {
+                            "text": "Badger"
+                        },
+                        {
+                            "text": "Buckeye"
+                        },
+                        {
+                            "text": "FireMaster"
+                        },
+                        {
+                            "text": "First Alert"
+                        },
+                        {
+                            "text": "Guardian"
+                        },
+                        {
+                            "text": "Heiser"
+                        },
+                        {
+                            "text": "JL Industries"
+                        },
+                        {
+                            "text": "Kidde"
+                        },
+                        {
+                            "text": "Pem-All"
+                        },
+                        {
+                            "text": "Potter Roemer"
+                        },
+                        {
+                            "text": "Pyrene"
+                        },
+                        {
+                            "text": "Pyro Chem"
+                        },
+                        {
+                            "text": "Sentry"
+                        },
+                        {
+                            "text": "SimplexGrinnell"
+                        },
+                        {
+                            "text": "Strike First"
+                        },
+                        {
+                            "text": "Victory"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_model",
+                    "title": "Model",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "properties_manufacture_date",
+                    "title": "Manufacture Date",
+                    "type": "date",
+                    "timestamp": true,
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "status",
+                    "title": "Status",
+                    "options": [
+                        {
+                            "text": "active"
+                        },
+                        {
+                            "text": "inactive"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "hint": "Only deactivate if no longer part of inspection",
+                    "initialAnswer": "active",
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "Monthly_Inspection",
+                    "title": "Monthly Inspection",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "Pass"
+                        },
+                        {
+                            "text": "Fail"
+                        },
+                        {
+                            "text": "N/I"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "required_rule": "always",
+                    "visible_rule": "when",
+                    "visible_expr": "status = \"active\""
+                },
+                {
+                    "type": "group",
+                    "children": [
+                        {
+                            "identifier": "severity",
+                            "title": "Severity",
+                            "options": [
+                                {
+                                    "text": "suggested"
+                                },
+                                {
+                                    "text": "deficient"
+                                },
+                                {
+                                    "text": "inoperable"
+                                }
+                            ],
+                            "type": "select",
+                            "required_rule": "when",
+                            "required_expr": "NOTBLANK(description)"
+                        },
+                        {
+                            "identifier": "description",
+                            "title": "Description of the Issue",
+                            "type": "text",
+                            "hint": "",
+                            "required_rule": "when",
+                            "required_expr": "NOTBLANK(severity)",
+                            "multi_line": true
+                        },
+                        {
+                            "type": "group",
+                            "autoIdentifier": true,
+                            "children": [
+                                {
+                                    "identifier": "deficiency_image",
+                                    "title": "Take a picture of the issue",
+                                    "type": "image"
+                                }
+                            ],
+                            "title": "Deficiency Photos",
+                            "identifier": "Deficiency_Photos",
+                            "hint": ""
+                        }
+                    ],
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "title": "Deficiencies",
+                    "identifier": "Deficiencies_Monthly_Inspection",
+                    "visible_rule": "when",
+                    "visible_expr": ".Monthly_Inspection = \"Fail\""
+                },
+                {
+                    "identifier": "Annual_Maintenance",
+                    "title": "Annual Maintenance",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "Pass"
+                        },
+                        {
+                            "text": "Fail"
+                        },
+                        {
+                            "text": "N/I"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "hint": "7.3.2.1  An annual external visual examination of all fire extinguishers shall be made to detect obvious physical damage, corrosion, or nozzle blockage to verify that the operating instructions are present, legible, and facing forward, and that the HMIS information is present and legible, and to determine if a 6-year interval examination or hydrostatic test is due.   7.3.2.2  At the time of the maintenance, the tamper seal of a rechargeable fire extinguisher shall be removed by operating the pull pin or locking device.   7.3.2.2.1 After the applicable maintenance procedures are completed, a new listed tamper seal shall be installed.  7.7.1  Discharge hoses on wheeled-type fire extinguishers shall be completely uncoiled and examined for damage annually.",
+                    "visible_rule": "when",
+                    "visible_expr": "AND(.Inspection_Type = \"Annual\",status = \"active\")",
+                    "required_rule": "always"
+                },
+                {
+                    "type": "group",
+                    "children": [
+                        {
+                            "identifier": "severity",
+                            "title": "Severity",
+                            "options": [
+                                {
+                                    "text": "suggested"
+                                },
+                                {
+                                    "text": "deficient"
+                                },
+                                {
+                                    "text": "inoperable"
+                                }
+                            ],
+                            "type": "select",
+                            "required_rule": "when",
+                            "required_expr": "NOTBLANK(description)"
+                        },
+                        {
+                            "identifier": "description",
+                            "title": "Description of the Issue",
+                            "type": "text",
+                            "hint": "",
+                            "required_rule": "when",
+                            "required_expr": "NOTBLANK(severity)",
+                            "multi_line": true
+                        },
+                        {
+                            "type": "group",
+                            "autoIdentifier": true,
+                            "children": [
+                                {
+                                    "identifier": "deficiency_image",
+                                    "title": "Take a picture of the issue",
+                                    "type": "image"
+                                }
+                            ],
+                            "title": "Deficiency Photos",
+                            "identifier": "Deficiency_Photos",
+                            "hint": ""
+                        }
+                    ],
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "title": "Deficiencies",
+                    "identifier": "Deficiencies_Annual_Maintenance",
+                    "visible_rule": "when",
+                    "visible_expr": "NOTBLANK(.Annual_Maintenance)"
+                },
+                {
+                    "identifier": "Conductivity_Test",
+                    "title": "Conductivity Test",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "Pass"
+                        },
+                        {
+                            "text": "Fail"
+                        },
+                        {
+                            "text": "N/I"
+                        }
+                    ],
+                    "type": "select",
+                    "timestamp": true,
+                    "visible_rule": "when",
+                    "visible_expr": "AND(AND(properties_extinguisher_type = \"CO2\",.Inspection_Type = \"Annual\"),status = \"active\")",
+                    "hint": "CO2 Only   7.4 Carbon Dioxide Hose Assembly Conductivity Test. A conductivity test shall be conducted annually on all carbon dioxide hose assemblies.  7.4.1 Carbon dioxide hose assemblies that fail the conductivity test shall be replaced.",
+                    "required_rule": "always"
+                },
+                {
+                    "type": "group",
+                    "children": [
+                        {
+                            "identifier": "severity",
+                            "title": "Severity",
+                            "options": [
+                                {
+                                    "text": "suggested"
+                                },
+                                {
+                                    "text": "deficient"
+                                },
+                                {
+                                    "text": "inoperable"
+                                }
+                            ],
+                            "type": "select",
+                            "required_rule": "when",
+                            "required_expr": "NOTBLANK(description)"
+                        },
+                        {
+                            "identifier": "description",
+                            "title": "Description of the Issue",
+                            "type": "text",
+                            "hint": "",
+                            "required_rule": "when",
+                            "required_expr": "NOTBLANK(severity)",
+                            "multi_line": true
+                        },
+                        {
+                            "type": "group",
+                            "autoIdentifier": true,
+                            "children": [
+                                {
+                                    "identifier": "deficiency_image",
+                                    "title": "Take a picture of the issue",
+                                    "type": "image"
+                                }
+                            ],
+                            "title": "Deficiency Photos",
+                            "identifier": "Deficiency_Photos",
+                            "hint": ""
+                        }
+                    ],
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "title": "Deficiencies",
+                    "identifier": "Deficiencies_Conductivity_Test",
+                    "visible_rule": "when",
+                    "visible_expr": ".Conductivity_Test = \"Fail\""
+                },
+                {
+                    "identifier": "properties_last_6_year_test_date",
+                    "title": "Last 6 Year Test Date",
+                    "type": "date",
+                    "timestamp": true,
+                    "hint": "If no 6 year maintenance has been done due to age of extinguisher, enter manufacture date.",
+                    "visible_rule": "when",
+                    "visible_expr": "OR(OR(OR(OR(properties_extinguisher_type = \"ABC - St Press\",properties_extinguisher_type = \"AFFF/FFFP  St Press\"),properties_extinguisher_type = \"BC - St Press\"),properties_extinguisher_type = \"D - St Press\"),properties_extinguisher_type = \"PK - St Press\")",
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "properties_last_hydro_date",
+                    "title": "Last Hydrostatic Test Date",
+                    "type": "date",
+                    "timestamp": true,
+                    "hint": "If no hydrostatic test has been done due to age of extinguisher, enter manufacture date.",
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "properties_gas_cartridge_serial_number",
+                    "title": "Gas Cartridge SN",
+                    "type": "barcode",
+                    "hint": "",
+                    "visible_rule": "when",
+                    "visible_expr": "OR(OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"ABC - Dir Press\",properties_extinguisher_type = \"ABC - Regulated Press\"),properties_extinguisher_type = \"AFFF/FFFP  Dir Press\"),properties_extinguisher_type = \"BC - Dir Press\"),properties_extinguisher_type = \"BC - Regulated Press\"),properties_extinguisher_type = \"D - Regulated Press\"),properties_extinguisher_type = \"PK - Dir Press\"),properties_extinguisher_type = \"PK - Regulated Press\"),properties_extinguisher_type = \"Plus 50C - Dir Press\")",
+                    "timestamp": true,
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "properties_cartridge_manufacture_date",
+                    "title": "Cartridge Manufacture Date",
+                    "type": "date",
+                    "timestamp": true,
+                    "hint": "",
+                    "visible_rule": "when",
+                    "visible_expr": "OR(OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"ABC - Dir Press\",properties_extinguisher_type = \"ABC - Regulated Press\"),properties_extinguisher_type = \"AFFF/FFFP  Dir Press\"),properties_extinguisher_type = \"BC - Dir Press\"),properties_extinguisher_type = \"BC - Regulated Press\"),properties_extinguisher_type = \"D - Regulated Press\"),properties_extinguisher_type = \"PK - Dir Press\"),properties_extinguisher_type = \"PK - Regulated Press\"),properties_extinguisher_type = \"Plus 50C - Dir Press\")",
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "properties_cartridge_hydrotest_date",
+                    "title": "Last Cartridge Hydro Date",
+                    "type": "date",
+                    "hint": "",
+                    "timestamp": true,
+                    "visible_rule": "when",
+                    "visible_expr": "OR(OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"ABC - Dir Press\",properties_extinguisher_type = \"ABC - Regulated Press\"),properties_extinguisher_type = \"AFFF/FFFP  Dir Press\"),properties_extinguisher_type = \"BC - Dir Press\"),properties_extinguisher_type = \"BC - Regulated Press\"),properties_extinguisher_type = \"D - Regulated Press\"),properties_extinguisher_type = \"PK - Dir Press\"),properties_extinguisher_type = \"PK - Regulated Press\"),properties_extinguisher_type = \"Plus 50C - Dir Press\")"
+                },
+                {
+                    "identifier": "cartridge_mfr_last_hydro",
+                    "title": "Cartridge Mfr/Last Hydro Year",
+                    "type": "calculated",
+                    "calculate_expr": "IF(NOTBLANK(properties_cartridge_hydrotest_date),properties_cartridge_hydrotest_date,properties_cartridge_manufacture_date)",
+                    "type_derived": "date",
+                    "hidden": true,
+                    "timestamp": true,
+                    "visible_rule": "when",
+                    "visible_expr": "OR(OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"ABC - Dir Press\",properties_extinguisher_type = \"ABC - Regulated Press\"),properties_extinguisher_type = \"AFFF/FFFP  Dir Press\"),properties_extinguisher_type = \"BC - Dir Press\"),properties_extinguisher_type = \"BC - Regulated Press\"),properties_extinguisher_type = \"D - Regulated Press\"),properties_extinguisher_type = \"PK - Dir Press\"),properties_extinguisher_type = \"PK - Regulated Press\"),properties_extinguisher_type = \"Plus 50C - Dir Press\")"
+                },
+                {
+                    "identifier": "properties_activation_cart_type",
+                    "title": "Expellant Gas Type",
+                    "options": [
+                        {
+                            "text": "Nitrogen"
+                        },
+                        {
+                            "text": "Argon"
+                        },
+                        {
+                            "text": "CO2"
+                        }
+                    ],
+                    "type": "select",
+                    "hint": "",
+                    "visible_rule": "when",
+                    "timestamp": true,
+                    "visible_expr": "OR(OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"ABC - Dir Press\",properties_extinguisher_type = \"ABC - Regulated Press\"),properties_extinguisher_type = \"AFFF/FFFP  Dir Press\"),properties_extinguisher_type = \"BC - Dir Press\"),properties_extinguisher_type = \"BC - Regulated Press\"),properties_extinguisher_type = \"D - Regulated Press\"),properties_extinguisher_type = \"PK - Dir Press\"),properties_extinguisher_type = \"PK - Regulated Press\"),properties_extinguisher_type = \"Plus 50C - Dir Press\")",
+                    "required_rule": "always"
+                },
+                {
+                    "identifier": "Expellant_Cyl__Hydro_Due_Date",
+                    "title": "Expellant Cyl. Hydro Due Date",
+                    "autoIdentifier": true,
+                    "type": "calculated",
+                    "calculate_expr": "ADDYEARS(cartridge_mfr_last_hydro,5)",
+                    "type_derived": "datetime",
+                    "hidden": true,
+                    "visible_rule": "when",
+                    "visible_expr": "OR(OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"ABC - Dir Press\",properties_extinguisher_type = \"ABC - Regulated Press\"),properties_extinguisher_type = \"AFFF/FFFP  Dir Press\"),properties_extinguisher_type = \"BC - Dir Press\"),properties_extinguisher_type = \"BC - Regulated Press\"),properties_extinguisher_type = \"D - Regulated Press\"),properties_extinguisher_type = \"PK - Dir Press\"),properties_extinguisher_type = \"PK - Regulated Press\"),properties_extinguisher_type = \"Plus 50C - Dir Press\")"
+                },
+                {
+                    "identifier": "Manu_Last_Hydro_Year",
+                    "title": "Manu/Last Hydro Year",
+                    "autoIdentifier": true,
+                    "type": "calculated",
+                    "calculate_expr": "IF(NOTBLANK(properties_last_hydro_date),properties_last_hydro_date,properties_manufacture_date)",
+                    "type_derived": "date",
+                    "hidden": true
+                },
+                {
+                    "identifier": "_5_Year_Hydro_Due_Date",
+                    "title": "5 Year Hydro Due Date",
+                    "autoIdentifier": true,
+                    "type": "calculated",
+                    "visible_rule": "when",
+                    "calculate_expr": "ADDYEARS(Manu_Last_Hydro_Year,5)",
+                    "type_derived": "datetime",
+                    "visible_expr": "AND(OR(OR(properties_extinguisher_type = \"ABC - Dir Press\",properties_extinguisher_type = \"AFFF/FFFP  St Press\"),properties_extinguisher_type = \"CO2\"),NOTBLANK(Manu_Last_Hydro_Year))",
+                    "timestamp": true,
+                    "hidden": true
+                },
+                {
+                    "identifier": "_6_Year_Maintenance_Due_Date",
+                    "title": "6 Year Maintenance Due Date",
+                    "autoIdentifier": true,
+                    "type": "calculated",
+                    "calculate_expr": "IF(AND(ISBLANK(properties_last_6_year_test_date),NOTBLANK(Manu_Last_Hydro_Year)),ADDYEARS(Manu_Last_Hydro_Year,6),IF(AND(NOTBLANK(properties_last_6_year_test_date),NOTBLANK(Manu_Last_Hydro_Year),(YEAR(properties_last_6_year_test_date) <= YEAR(Manu_Last_Hydro_Year))),ADDYEARS(Manu_Last_Hydro_Year,6),IF(AND(NOTBLANK(properties_last_6_year_test_date),NOTBLANK(Manu_Last_Hydro_Year),(YEAR(properties_last_6_year_test_date) > YEAR(Manu_Last_Hydro_Year))),ADDYEARS(properties_last_6_year_test_date,6),\"\")))",
+                    "type_derived": "text",
+                    "visible_rule": "when",
+                    "visible_expr": "OR(OR(OR(OR(OR(properties_extinguisher_type = \"ABC - St Press\",properties_extinguisher_type = \"AFFF/FFFP  St Press\"),properties_extinguisher_type = \"BC - St Press\"),properties_extinguisher_type = \"D - St Press\"),properties_extinguisher_type = \"PK - St Press\"),NOTBLANK(Manu_Last_Hydro_Year))",
+                    "timestamp": true,
+                    "hidden": true
+                },
+                {
+                    "identifier": "_12_Hydro_Due_Date",
+                    "title": "12 Hydro Due Date",
+                    "autoIdentifier": true,
+                    "type": "calculated",
+                    "calculate_expr": "ADDYEARS(Manu_Last_Hydro_Year,12)",
+                    "type_derived": "datetime",
+                    "visible_rule": "when",
+                    "visible_expr": "AND(OR(OR(OR(OR(OR(OR(OR(OR(OR(OR(OR(OR(OR(properties_extinguisher_type = \"ABC - Dir Press\",properties_extinguisher_type = \"ABC - Regulated Press\"),properties_extinguisher_type = \"ABC - St Press\"),properties_extinguisher_type = \"BC - Dir Press\"),properties_extinguisher_type = \"BC - Regulated Press\"),properties_extinguisher_type = \"BC - St Press\"),properties_extinguisher_type = \"D - Regulated Press\"),properties_extinguisher_type = \"D - St Press\"),properties_extinguisher_type = \"Halon - wheeled\"),properties_extinguisher_type = \"Halotron - wheeled\"),properties_extinguisher_type = \"PK - Dir Press\"),properties_extinguisher_type = \"PK - Regulated Press\"),properties_extinguisher_type = \"PK - St Press\"),properties_extinguisher_type = \"Plus 50C - Dir Press\"),NOTBLANK(Manu_Last_Hydro_Year))",
+                    "timestamp": true,
+                    "hidden": true
+                },
+                {
+                    "identifier": "asset_id",
+                    "title": "Asset ID",
+                    "type": "text",
+                    "readonly_rule": "always",
+                    "hidden": true
+                }
+            ],
+            "title": "Wheeled Extinguishers",
+            "identifier": "servicetrade_assets_wheeled_fire_extinguisher",
+            "visible_rule": "when",
+            "visible_expr": "CONTAINS(.What_type_of_extinguisher_s__are_being_inspected_,\"Wheeled Extinguishers\")"
+        },
+        {
+            "identifier": "Comments___Recommendations",
+            "title": "Comments / Recommendations",
+            "autoIdentifier": true,
+            "type": "text",
+            "multi_line": true
+        },
+        {
+            "identifier": "Liability_Release_Statement",
+            "title": "The owner and/or designated representative acknowledges the responsibility of the operating condition of the component parts at the time of this inspection. It is agreed that the inspection service provided by the contractor as prescribed herein is limited to performing a visual inspection and/or routine testing, and any investigation or unscheduled testing, modification, maintenance, repair, etc., of the component parts is not included as part of the inspection work performed. It is further understood that all information contained herein is provided to the best of the knowledge of the party providing such information.",
+            "type": "text",
+            "readonly_rule": "always"
+        },
+        {
+            "identifier": "Customer_Signature",
+            "title": "Customer Signature",
+            "autoIdentifier": true,
+            "type": "signature",
+            "timestamp": true
+        },
+        {
+            "identifier": "Customer_Name",
+            "title": "Customer Name",
+            "autoIdentifier": true,
+            "type": "text"
+        },
+        {
+            "identifier": "Technician_Signature",
+            "title": "Technician Signature",
+            "autoIdentifier": true,
+            "type": "signature",
+            "timestamp": true,
+            "required_rule": "always"
+        },
+        {
+            "identifier": "servicetrade_technician_name",
+            "title": "Technician Name",
+            "type": "text",
+            "timestamp": true
+        },
+        {
+            "identifier": "Technician_License",
+            "title": "Technician License",
+            "autoIdentifier": true,
+            "type": "text"
+        },
+        {
+            "identifier": "servicetrade_job_id",
+            "title": "ServiceTrade Job ID",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        },
+        {
+            "identifier": "servicetrade_technician_id",
+            "title": "ServiceTrade Tech ID",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        },
+        {
+            "identifier": "servicetrade_office_license",
+            "title": "Company Contract #",
+            "type": "text",
+            "timestamp": true
+        },
+        {
+            "identifier": "servicetrade_brand_logo",
+            "title": "Office Logo",
+            "type": "image",
+            "readonly_rule": "always"
+        },
+        {
+            "identifier": "servicetrade_office_address_street",
+            "title": "Office Address",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        },
+        {
+            "identifier": "servicetrade_office_address_city",
+            "title": "Office City",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        },
+        {
+            "identifier": "servicetrade_office_address_state",
+            "title": "Office State",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        },
+        {
+            "identifier": "servicetrade_office_address_postal_code",
+            "title": "Office Zip Code",
+            "type": "text",
+            "readonly_rule": "always",
+            "hidden": true
+        }
+    ],
+    "title": "NFPA 10 Fire Extinguisher 2022 ed",
+    "description": "DO NOT EDIT - Final Edition DM ver 1.43"
+}
