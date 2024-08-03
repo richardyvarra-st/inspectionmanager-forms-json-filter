@@ -8,7 +8,6 @@ function updateJsonTitle() {
     // e.g., loadData(jsonTitle);
 }
 
-
 // Function to search and load JSON file
 async function searchJSON() {
     const keyword = document.getElementById('search-bar').value;
@@ -59,15 +58,39 @@ async function loadSelectedFile() {
     }
 }
 
+// Function to flatten nested JSON data
+function flattenData(data) {
+    let result = [];
+
+    function recurse(children) {
+        if (Array.isArray(children)) {
+            children.forEach(child => {
+                if (child.children) {
+                    recurse(child.children);
+                }
+                result.push(child);
+            });
+        }
+    }
+
+    recurse(data.children);
+    return result;
+}
+
 // Function to filter and display the JSON data
 function filterAndDisplayData() {
     const tbody = document.getElementById('data-table').querySelector('tbody');
     tbody.innerHTML = '';
 
-    if (jsonData.children) {
-        const filteredData = jsonData.children.flatMap(group =>
-            group.children ? group.children.filter(item => item.required_rule === 'always') : []
-        );
+    if (jsonData && jsonData.children) {
+        // Flatten nested data
+        const flatData = flattenData(jsonData);
+
+        // Filter the flattened data
+        const filteredData = flatData.filter(item => item.required_rule === 'always');
+
+        // Debugging: Log the filtered data
+        console.log('Filtered data:', filteredData);
 
         filteredData.forEach(item => {
             const row = document.createElement('tr');
@@ -82,7 +105,7 @@ function filterAndDisplayData() {
     }
 }
 
-// Function to export the filtered data to Excel// Function to export the filtered data to Excel with formatting
+// Function to export the filtered data to Excel with formatting
 function exportToExcel() {
     const filteredData = filterAndDisplayData().map(({ identifier, title, required_rule }) => ({ identifier, title, required_rule }));
     const worksheet = XLSX.utils.json_to_sheet(filteredData);
@@ -101,13 +124,11 @@ function exportToExcel() {
         worksheet[cell].s = style;
     };
 
-    // Apply the header style to the first three rows
+    // Apply the header style to the first row
     const range = XLSX.utils.decode_range(worksheet['!ref']);
-    for (let R = range.s.r; R <= range.s.r + 2; R++) {
-        for (let C = range.s.c; C <= range.e.c; C++) {
-            const cell_address = XLSX.utils.encode_cell({ c: C, r: R });
-            applyStyle(cell_address, headerStyle);
-        }
+    for (let C = range.s.c; C <= range.e.c; C++) {
+        const cell_address = XLSX.utils.encode_cell({ c: C, r: range.s.r });
+        applyStyle(cell_address, headerStyle);
     }
 
     // Create a new workbook and append the styled worksheet
