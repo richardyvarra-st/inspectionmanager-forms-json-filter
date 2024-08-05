@@ -1,0 +1,143 @@
+{
+    "type": "root",
+    "children": [
+        {
+            "type": "group",
+            "children": [
+                {
+                    "identifier": "servicetrade_office_name",
+                    "title": "ITM Service Company",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "servicetrade_office_phoneNumber",
+                    "title": "Contact Telephone #",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "Inspection_Date",
+                    "title": "Inspection Start Date",
+                    "type": "date"
+                },
+                {
+                    "identifier": "Inspection_End_Date",
+                    "title": "Inspection Finish Date",
+                    "type": "date"
+                },
+                {
+                    "identifier": "servicetrade_tech_name",
+                    "title": "Inspector's Name",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "Inspection_Permitee",
+                    "title": "Inspector's Permitee #",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "servicetrade_location_name",
+                    "title": "Inspected Property Name",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "servicetrade_location_street",
+                    "title": "Inspected Property Address",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "servicetrade_location_city",
+                    "title": "City",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "servicetrade_location_state",
+                    "title": "State",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "servicetrade_location_postal_code",
+                    "title": "ZIP",
+                    "type": "text",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "system_inspected",
+                    "title": "System(s) Inspected",
+                    "type": "text"
+                },
+                {
+                    "identifier": "Inspection_Status",
+                    "title": "Inspection Status",
+                    "autoIdentifier": true,
+                    "options": [
+                        {
+                            "text": "GREEN"
+                        },
+                        {
+                            "text": "YELLOW"
+                        },
+                        {
+                            "text": "RED"
+                        }
+                    ],
+                    "type": "select"
+                },
+                {
+                    "identifier": "desc_noncritical_deficiencies",
+                    "title": "Brief Description of Noncritical Deficiencies",
+                    "type": "text",
+                    "multi_line": true
+                },
+                {
+                    "identifier": "desc_critical_deficiencies",
+                    "title": "Brief description of Critical Deficiencies",
+                    "type": "text",
+                    "multi_line": true
+                },
+                {
+                    "identifier": "desc_impairments",
+                    "title": "Brief Description of Impairments",
+                    "type": "text",
+                    "multi_line": true
+                },
+                {
+                    "identifier": "additional_comments",
+                    "title": "Additional Comments",
+                    "type": "text"
+                },
+                {
+                    "identifier": "Technician_Signature",
+                    "title": "Technician Signature",
+                    "autoIdentifier": true,
+                    "type": "signature",
+                    "required_rule": "always",
+                    "timestamp": true
+                },
+                {
+                    "identifier": "servicetrade_technician_id",
+                    "title": "Technician ID",
+                    "type": "text",
+                    "hidden": true
+                },
+                {
+                    "identifier": "servicetrade_job_id",
+                    "title": "Job ID",
+                    "type": "text",
+                    "hidden": true
+                }
+            ],
+            "title": "Uniform Summary",
+            "identifier": "uniform_summary"
+        }
+    ],
+    "title": " FL Uniform Summary Form",
+    "description": "Complete DO NOT EDIT ver 1.16"
+}

@@ -10,13 +10,13 @@ function updateJsonTitle() {
 
 // Function to search and load JSON file
 async function searchJSON() {
-    const keyword = document.getElementById('search-bar').value;
+    const keyword = document.getElementById('search-bar').value.toLowerCase();
     if (keyword) {
         try {
             const response = await fetch('/list-files');
             if (!response.ok) throw new Error('Error fetching file list');
             const files = await response.json();
-            const filteredFiles = files.filter(file => file.includes(keyword));
+            const filteredFiles = files.filter(file => file.toLowerCase().includes(keyword));
 
             const fileList = document.getElementById('file-list');
             fileList.innerHTML = '';
@@ -40,6 +40,7 @@ async function searchJSON() {
         alert('Please enter a search keyword');
     }
 }
+
 
 // Function to load the selected file
 async function loadSelectedFile() {
