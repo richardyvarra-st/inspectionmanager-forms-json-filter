@@ -144,11 +144,3 @@ function exportToExcel() {
     // Write the workbook to a file
     XLSX.writeFile(workbook, 'filtered_data.xlsx');
 }
-
-// Function to run a script
-function runScript() {
-    // Example script content
-    const scriptContent = 'console.log("Script executed");';
-    const blob = new Blob([scriptContent], { type: 'text/javascript' });
-    saveAs(blob, 'script.js');
-}
