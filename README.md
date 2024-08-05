@@ -16,7 +16,6 @@ This project provides a simple web interface to search, filter, and export JSON 
 - npm (Node Package Manager)
 
 ## Getting Started
-To write subsections for the "Getting Started" section, you can use the following markdown format:
 
 ### Step 1: Install Dependencies
 To get started, make sure you have Node.js and npm installed on your system. If you don't have them installed, you can download and install them from the official Node.js website.
