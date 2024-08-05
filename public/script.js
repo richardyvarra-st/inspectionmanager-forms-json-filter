@@ -89,6 +89,9 @@ function filterAndDisplayData() {
         // Filter the flattened data
         const filteredData = flatData.filter(item => item.required_rule === 'always');
 
+        // Update total fields count
+        document.getElementById('total-fields').textContent = `Total fields: ${filteredData.length}`;
+
         // Debugging: Log the filtered data
         console.log('Filtered data:', filteredData);
 
@@ -101,10 +104,10 @@ function filterAndDisplayData() {
         return filteredData;
     } else {
         console.log('No children found in JSON data');
+        document.getElementById('total-fields').textContent = 'Total fields: 0';
         return [];
     }
 }
-
 // Function to export the filtered data to Excel with formatting
 function exportToExcel() {
     const filteredData = filterAndDisplayData().map(({ identifier, title, required_rule }) => ({ identifier, title, required_rule }));
