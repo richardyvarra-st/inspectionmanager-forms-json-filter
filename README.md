@@ -97,6 +97,13 @@ npm run start
 ### Step 5: Access the Web Interface
 Open your web browser and navigate to `http://localhost:3000` to access the web interface.
 
+
+### Video Instruction
+<video width="600" controls>
+  <source src="install.mp4" type="video/mp4">
+
+</video>
+
 ### Suggestion 
 VS Code is recommended for running this application, you can download the app via ServiceTrade Self-Service application.
 
