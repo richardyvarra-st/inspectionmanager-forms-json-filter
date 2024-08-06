@@ -22,6 +22,13 @@ To get started, make sure you have Node.js and npm installed on your system. If 
 
 ### Step 2: Clone the Repository
 Next, clone the repository to your local machine using the following command:
+- When cloning repository, make sure to put the repo in a directory that you can access. Cloning into the desktop directory is recommended.
+- Once cloned, cd into the directory where you cloned the repo.
+- cd into the repo directory (You can only run this application from inside the repo directory)
+```
+cd desktop
+cd inspectionmanager-forms-json-filter
+```
 
 ```
 git clone https://github.com/richardyvarra-st/inspectionmanager-forms-json-filter.git
