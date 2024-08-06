@@ -26,12 +26,11 @@ Next, clone the repository to your local machine using the following command:
 - Once cloned, cd into the directory where you cloned the repo.
 - cd into the repo directory (You can only run this application from inside the repo directory)
 ```
+git clone https://github.com/richardyvarra-st/inspectionmanager-forms-json-filter.git
+```
+```
 cd desktop
 cd inspectionmanager-forms-json-filter
-```
-
-```
-git clone https://github.com/richardyvarra-st/inspectionmanager-forms-json-filter.git
 ```
 
 ### Step 3: Install Packages
