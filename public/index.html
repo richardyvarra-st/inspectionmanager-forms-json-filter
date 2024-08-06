@@ -18,7 +18,6 @@
         <div class="d-flex align-items-center mb-4">
             <img src="IspecMan.png" alt="Logo" class="mr-2">
             <h1 class="mb-0">JSON Form Filter</h1>
-         
         </div>
         <div class="search-container mb-4">
             <div class="form-row align-items-center">
@@ -32,24 +31,38 @@
                     <select id="file-list" class="form-control" onchange="loadSelectedFile()"></select>
                 </div>
                 <div class="col-auto">
+                    <select id="filter-type" class="form-control">
+                        <option value="all">All Fields</option>
+                        <option value="required">Required Fields Only</option>
+                    </select>
+                </div>
+                <div class="col-auto">
                     <button class="btn btn-success" onclick="exportToExcel()">Export to Excel</button>
                 </div>
-                  <div class="col-auto">
+                <div class="col-auto">
                     <div id="total-fields" class="form-control-plaintext">Total fields: 0</div>
                 </div>
             </div>
         </div>
-        <table id="data-table" class="table table-bordered">
-            <thead class="thead-success">
-                <tr>
-                    <th>Identifier</th>
-                    <th>Title</th>
-                    <th>Required Rule</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <!-- Scrollbar Container -->
+        <div class="top-scrollbar">
+            <div></div>
+        </div>
+        <!-- Table Container -->
+        <div class="scroll-container">
+            <table id="data-table" class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Identifier</th>
+                        <th>Title</th>
+                        <th>Required Rule</th>
+                        <th>Group</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -1,147 +1,157 @@
-let jsonData = {};
-let jsonTitle = "Default Title"; // Default title
+document.addEventListener('DOMContentLoaded', () => {
+    let jsonData = {};
+    let jsonTitle = "Default Title"; // Default title
 
-function updateJsonTitle() {
-    const selectElement = document.getElementById('file-list');
-    jsonTitle = selectElement.options[selectElement.selectedIndex].text;
-    // You can also fetch the JSON data here based on selection
-    // e.g., loadData(jsonTitle);
-}
-
-// Function to search and load JSON file
-async function searchJSON() {
-    const keyword = document.getElementById('search-bar').value.toLowerCase();
-    if (keyword) {
-        try {
-            const response = await fetch('/list-files');
-            if (!response.ok) throw new Error('Error fetching file list');
-            const files = await response.json();
-            const filteredFiles = files.filter(file => file.toLowerCase().includes(keyword));
-
-            const fileList = document.getElementById('file-list');
-            fileList.innerHTML = '';
-            filteredFiles.forEach(file => {
-                const option = document.createElement('option');
-                option.value = file;
-                option.textContent = file;
-                fileList.appendChild(option);
-            });
-
-            if (filteredFiles.length > 0) {
-                loadSelectedFile();
-            } else {
-                alert('No files found');
-            }
-        } catch (error) {
-            console.error('Error fetching file list:', error);
-            alert('Error loading file list');
-        }
-    } else {
-        alert('Please enter a search keyword');
+    // Function to update the JSON title based on the selected file
+    function updateJsonTitle() {
+        const selectElement = document.getElementById('file-list');
+        jsonTitle = selectElement.options[selectElement.selectedIndex].text;
     }
-}
 
+    // Function to search and load JSON file
+    async function searchJSON() {
+        const keyword = document.getElementById('search-bar').value;
+        if (keyword) {
+            try {
+                const response = await fetch('/list-files');
+                if (!response.ok) throw new Error('Error fetching file list');
+                const files = await response.json();
+                const filteredFiles = files.filter(file => file.toLowerCase().includes(keyword.toLowerCase()));
 
-// Function to load the selected file
-async function loadSelectedFile() {
-    const fileList = document.getElementById('file-list');
-    const selectedFile = fileList.value;
-    if (selectedFile) {
-        try {
-            const response = await fetch(`/files/${selectedFile}`);
-            if (!response.ok) throw new Error('Error fetching JSON file');
-            jsonData = await response.json();
-            filterAndDisplayData();
-        } catch (error) {
-            console.error('Error fetching JSON:', error);
-            alert('Error loading JSON file');
-        }
-    }
-}
+                const fileList = document.getElementById('file-list');
+                fileList.innerHTML = '';
+                filteredFiles.forEach(file => {
+                    const option = document.createElement('option');
+                    option.value = file;
+                    option.textContent = file;
+                    fileList.appendChild(option);
+                });
 
-// Function to flatten nested JSON data
-function flattenData(data) {
-    let result = [];
-
-    function recurse(children) {
-        if (Array.isArray(children)) {
-            children.forEach(child => {
-                if (child.children) {
-                    recurse(child.children);
+                if (filteredFiles.length > 0) {
+                    loadSelectedFile();
+                } else {
+                    alert('No files found');
                 }
-                result.push(child);
+            } catch (error) {
+                console.error('Error fetching file list:', error);
+                alert('Error loading file list');
+            }
+        } else {
+            alert('Please enter a search keyword');
+        }
+    }
+
+    // Function to load the selected file
+    async function loadSelectedFile() {
+        const fileList = document.getElementById('file-list');
+        const selectedFile = fileList.value;
+        if (selectedFile) {
+            try {
+                const response = await fetch(`/files/${selectedFile}`);
+                if (!response.ok) throw new Error('Error fetching JSON file');
+                jsonData = await response.json();
+                filterAndDisplayData();
+            } catch (error) {
+                console.error('Error fetching JSON:', error);
+                alert('Error loading JSON file');
+            }
+        }
+    }
+
+    // Function to filter and display the JSON data
+    function filterAndDisplayData() {
+        const filterType = document.getElementById('filter-type').value;
+        const tbody = document.getElementById('data-table').querySelector('tbody');
+        tbody.innerHTML = '';
+
+        let totalFields = 0;
+        if (jsonData.children) {
+            jsonData.children.forEach(group => {
+                if (group.children) {
+                    const filteredData = group.children.filter(item => {
+                        return filterType === 'all' || item.required_rule === 'always';
+                    });
+
+                    if (filteredData.length > 0) {
+                        const groupRow = document.createElement('tr');
+                        groupRow.classList.add('table-success'); // Apply the Bootstrap success color
+                        groupRow.innerHTML = `<td colspan="4"><strong>${group.title}</strong></td>`;
+                        tbody.appendChild(groupRow);
+
+                        filteredData.forEach(item => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `<td style="word-wrap: break-word; max-width: 200px;"td>${item.identifier}</td><td>${item.title}</td><td>${filterType === 'all' && item.required_rule !== 'always' ? 'Not Required, System Field or When' : item.required_rule}</td><td>${group.title}</td>`;
+                            tbody.appendChild(row);
+                        });
+
+                        totalFields += filteredData.length;
+                    }
+                }
+            });
+
+            document.getElementById('total-fields').textContent = `Total fields: ${totalFields}`;
+        } else {
+            console.log('No children found in JSON data');
+        }
+    }
+
+    // Function to export the filtered data to Excel
+    function exportToExcel() {
+        const rows = [];
+        const filterType = document.getElementById('filter-type').value;
+
+        if (jsonData.children) {
+            jsonData.children.forEach(group => {
+                if (group.children) {
+                    const filteredData = group.children.filter(item => {
+                        return filterType === 'all' || item.required_rule === 'always';
+                    });
+
+                    if (filteredData.length > 0) {
+                        filteredData.forEach(item => {
+                            rows.push({
+                               
+                                identifier: item.identifier,
+                                title: item.title,
+                                required_rule: filterType === 'all' && item.required_rule !== 'always' ? 'Not Required, System Field or When' : item.required_rule,
+                                group: group.title
+                            });
+                        });
+                    }
+                }
             });
         }
-    }
 
-    recurse(data.children);
-    return result;
-}
-
-// Function to filter and display the JSON data
-function filterAndDisplayData() {
-    const tbody = document.getElementById('data-table').querySelector('tbody');
-    tbody.innerHTML = '';
-
-    if (jsonData && jsonData.children) {
-        // Flatten nested data
-        const flatData = flattenData(jsonData);
-
-        // Filter the flattened data
-        const filteredData = flatData.filter(item => item.required_rule === 'always');
-
-        // Update total fields count
-        document.getElementById('total-fields').textContent = `Total fields: ${filteredData.length}`;
-
-        // Debugging: Log the filtered data
-        console.log('Filtered data:', filteredData);
-
-        filteredData.forEach(item => {
-            const row = document.createElement('tr');
-            row.innerHTML = `<td>${item.identifier}</td><td>${item.title}</td><td>${item.required_rule}</td>`;
-            tbody.appendChild(row);
-        });
-
-        return filteredData;
-    } else {
-        console.log('No children found in JSON data');
-        document.getElementById('total-fields').textContent = 'Total fields: 0';
-        return [];
-    }
-}
-// Function to export the filtered data to Excel with formatting
-function exportToExcel() {
-    const filteredData = filterAndDisplayData().map(({ identifier, title, required_rule }) => ({ identifier, title, required_rule }));
-    const worksheet = XLSX.utils.json_to_sheet(filteredData);
-
-    // Define the styles
-    const headerStyle = {
-        font: { bold: true },
-        fill: {
-            fgColor: { rgb: "0000FF" } // Blue background color
+        if (rows.length === 0) {
+            alert('No data to export');
+            return;
         }
-    };
 
-    // Function to apply styles to a cell
-    const applyStyle = (cell, style) => {
-        if (!worksheet[cell]) worksheet[cell] = { t: "s", v: "" };
-        worksheet[cell].s = style;
-    };
+        const worksheet = XLSX.utils.json_to_sheet(rows, { header: ["group", "identifier", "title", "required_rule"] });
 
-    // Apply the header style to the first row
-    const range = XLSX.utils.decode_range(worksheet['!ref']);
-    for (let C = range.s.c; C <= range.e.c; C++) {
-        const cell_address = XLSX.utils.encode_cell({ c: C, r: range.s.r });
-        applyStyle(cell_address, headerStyle);
+        // Create a new workbook and append the worksheet
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, jsonTitle);
+
+        // Set column widths for better readability
+        worksheet['!cols'] = [{ wpx: 150 }, { wpx: 100 }, { wpx: 200 }, { wpx: 150 }];
+
+        // Write the workbook to a file
+        XLSX.writeFile(workbook, 'filtered_data.xlsx');
     }
 
-    // Create a new workbook and append the styled worksheet
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, jsonTitle);
+    // Function to run a script
+    function runScript() {
+        // Example script content
+        const scriptContent = 'console.log("Script executed");';
+        const blob = new Blob([scriptContent], { type: 'text/javascript' });
+        saveAs(blob, 'script.js');
+    }
 
-    // Set column widths for better readability
-    worksheet['!cols'] = [{ wpx: 100 }, { wpx: 200 }, { wpx: 150 }];
-
-    // Write the workbook to a file
-    XLSX.writeFile(workbook, 'filtered_data.xlsx');
-}
+    // Export the functions to the global scope so they can be called from the HTML
+    window.searchJSON = searchJSON;
+    window.loadSelectedFile = loadSelectedFile;
+    window.filterAndDisplayData = filterAndDisplayData;
+    window.exportToExcel = exportToExcel;
+    window.runScript = runScript;
+});
