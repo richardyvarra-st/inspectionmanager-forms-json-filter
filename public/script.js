@@ -66,26 +66,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let totalFields = 0;
         if (jsonData.children) {
-            jsonData.children.forEach(group => {
-                if (group.children) {
-                    const filteredData = group.children.filter(item => {
+            jsonData.children.forEach(parentGroup => {
+                let parentGroupAdded = false;
+
+                if (parentGroup.children) {
+                    // Filter main group questions
+                    const mainGroupQuestions = parentGroup.children.filter(item => !item.children);
+                    const filteredMainGroupQuestions = mainGroupQuestions.filter(item => {
                         return filterType === 'all' || item.required_rule === 'always';
                     });
 
-                    if (filteredData.length > 0) {
+                    if (filteredMainGroupQuestions.length > 0) {
                         const groupRow = document.createElement('tr');
                         groupRow.classList.add('table-success'); // Apply the Bootstrap success color
-                        groupRow.innerHTML = `<td colspan="4"><strong>${group.title}</strong></td>`;
+                        groupRow.innerHTML = `<td colspan="4"><strong>${parentGroup.title}</strong></td>`;
                         tbody.appendChild(groupRow);
+                        parentGroupAdded = true;
 
-                        filteredData.forEach(item => {
+                        filteredMainGroupQuestions.forEach(item => {
                             const row = document.createElement('tr');
-                            row.innerHTML = `<td style="word-wrap: break-word; max-width: 200px;"td>${item.identifier}</td><td>${item.title}</td><td>${filterType === 'all' && item.required_rule !== 'always' ? 'Not Required, System Field or When' : item.required_rule}</td><td>${group.title}</td>`;
+                            row.innerHTML = `<td style="word-wrap: break-word; max-width: 200px;">${item.identifier}</td><td>${parentGroup.title}</td><td>${item.title}</td><td>${filterType === 'all' && item.required_rule !== 'always' ? 'Not Required' : 'Required'}</td>`;
                             tbody.appendChild(row);
                         });
 
-                        totalFields += filteredData.length;
+                        totalFields += filteredMainGroupQuestions.length;
                     }
+
+                    // Filter subgroup questions
+                    const subGroups = parentGroup.children.filter(item => item.children);
+                    subGroups.forEach(childGroup => {
+                        const filteredData = childGroup.children.filter(item => {
+                            return filterType === 'all' || item.required_rule === 'always';
+                        });
+
+                        if (filteredData.length > 0) {
+                            if (!parentGroupAdded) {
+                                const groupRow = document.createElement('tr');
+                                groupRow.classList.add('table-success'); // Apply the Bootstrap success color
+                                groupRow.innerHTML = `<td colspan="4"><strong>${parentGroup.title}</strong></td>`;
+                                tbody.appendChild(groupRow);
+                                parentGroupAdded = true;
+                            }
+
+                            filteredData.forEach(item => {
+                                const row = document.createElement('tr');
+                                row.innerHTML = `<td style="word-wrap: break-word; max-width: 200px;">${item.identifier}</td><td>${parentGroup.title} / ${childGroup.title}</td><td>${item.title}</td><td>${filterType === 'all' && item.required_rule !== 'always' ? 'Not Required' : 'Required'}</td>`;
+                                tbody.appendChild(row);
+                            });
+
+                            totalFields += filteredData.length;
+                        }
+                    });
                 }
             });
 
@@ -101,23 +132,43 @@ document.addEventListener('DOMContentLoaded', () => {
         const filterType = document.getElementById('filter-type').value;
 
         if (jsonData.children) {
-            jsonData.children.forEach(group => {
-                if (group.children) {
-                    const filteredData = group.children.filter(item => {
+            jsonData.children.forEach(parentGroup => {
+                if (parentGroup.children) {
+                    // Main group questions
+                    const mainGroupQuestions = parentGroup.children.filter(item => !item.children);
+                    const filteredMainGroupQuestions = mainGroupQuestions.filter(item => {
                         return filterType === 'all' || item.required_rule === 'always';
                     });
 
-                    if (filteredData.length > 0) {
-                        filteredData.forEach(item => {
+                    if (filteredMainGroupQuestions.length > 0) {
+                        filteredMainGroupQuestions.forEach(item => {
                             rows.push({
-                               
+                                group: parentGroup.title,
                                 identifier: item.identifier,
                                 title: item.title,
-                                required_rule: filterType === 'all' && item.required_rule !== 'always' ? 'Not Required, System Field or When' : item.required_rule,
-                                group: group.title
+                                required_rule: filterType === 'all' && item.required_rule !== 'always' ? 'Not Required' : 'Required'
                             });
                         });
                     }
+
+                    // Subgroup questions
+                    const subGroups = parentGroup.children.filter(item => item.children);
+                    subGroups.forEach(childGroup => {
+                        const filteredData = childGroup.children.filter(item => {
+                            return filterType === 'all' || item.required_rule === 'always';
+                        });
+
+                        if (filteredData.length > 0) {
+                            filteredData.forEach(item => {
+                                rows.push({
+                                    group: `${parentGroup.title} / ${childGroup.title}`,
+                                    identifier: item.identifier,
+                                    title: item.title,
+                                    required_rule: filterType === 'all' && item.required_rule !== 'always' ? 'Not Required' : 'Required'
+                                });
+                            });
+                        }
+                    });
                 }
             });
         }
@@ -134,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         XLSX.utils.book_append_sheet(workbook, worksheet, jsonTitle);
 
         // Set column widths for better readability
-        worksheet['!cols'] = [{ wpx: 150 }, { wpx: 100 }, { wpx: 200 }, { wpx: 150 }];
+        worksheet['!cols'] = [{ wpx: 200 }, { wpx: 150 }, { wpx: 200 }, { wpx: 150 }];
 
         // Write the workbook to a file
         XLSX.writeFile(workbook, 'filtered_data.xlsx');
