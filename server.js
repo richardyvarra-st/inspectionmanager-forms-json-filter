@@ -26,6 +26,6 @@ app.get('/files/:filename', (req, res) => {
     res.sendFile(filepath);
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('Server is running on port ${port}');
 });
