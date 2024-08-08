@@ -1,13 +1,11 @@
 {
-  "homepage": "https://richardyvarra-st.github.io/inspectionmanager-forms-json-filter/",
+ 
   "dependencies": {
     "express": "^4.19.2"
   },
   "scripts": {
-    "start": "node server.js",
-    "deploy": "gh-pages -d build"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "start": "node server.js"
+   
   }
+ 
 }

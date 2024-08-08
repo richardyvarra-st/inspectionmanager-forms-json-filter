@@ -4,6 +4,7 @@ const path = require('path');
 
 const app = express();
 const directoryPath = path.join(__dirname, 'form-json');
+const port = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
@@ -26,5 +27,5 @@ app.get('/files/:filename', (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
+    console.log('Server is running on port ${port}');
 });
