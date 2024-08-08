@@ -1,0 +1,76 @@
+body{
+  font-family: arial, sans-serif;
+}
+.search-container{
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+h1{
+  text-align: center;
+  font-family: Andale Mono, monospace;
+  font-weight: bold;
+
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+thead{
+  background-color:rgb(198, 231, 198)  
+}
+
+th, td ,thead{
+border: 1px solid #111010;
+text-align: left;
+padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.group-row {
+  background-color: #d5f5e3; /* Pastel green */
+  font-weight: bold;
+}
+.table-responsive {
+  overflow-x: auto;
+}
+
+@media (max-width: 576px) {
+  .search-container .form-row .col-12 {
+      margin-bottom: 1rem;
+  }
+}
+
+.identifier-column {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+/* Styles for the top scrollbar */
+.top-scrollbar {
+  overflow-x: auto;
+
+  background-color: #f1f1f1;
+  margin-bottom: -1px; /* Fix for visual alignment */
+}
+
+.top-scrollbar div {
+  display: inline-block;
+  height: 20px; /* Adjust height if needed */
+}
+
+/* Styles for the scroll container */
+.scroll-container {
+  overflow-x: auto;
+  width: 100%; /* Ensure it uses full width of the container */
+}
+
+/* Styles for group rows */
+.bg-success {
+  background-color: #d4edda; /* Pastel green background */
+  color: #155724; /* Dark green text */
+}
+
