@@ -70,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 let parentGroupAdded = false;
 
                 if (parentGroup.children) {
-                    // Filter main group questions
-                    const mainGroupQuestions = parentGroup.children.filter(item => !item.children);
+                    // Filter main group questions (excluding deficiencies)
+                    const mainGroupQuestions = parentGroup.children.filter(item => !item.children && !item.title.toLowerCase().includes('deficiencies'));
                     const filteredMainGroupQuestions = mainGroupQuestions.filter(item => {
                         return filterType === 'all' || item.required_rule === 'always';
                     });
@@ -79,21 +79,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (filteredMainGroupQuestions.length > 0) {
                         const groupRow = document.createElement('tr');
                         groupRow.classList.add('table-success'); // Apply the Bootstrap success color
-                        groupRow.innerHTML = `<td colspan="4"><strong>${parentGroup.title}</strong></td>`;
+                        groupRow.innerHTML = `<td colspan="5"><strong>${parentGroup.title}</strong></td>`;
                         tbody.appendChild(groupRow);
                         parentGroupAdded = true;
 
                         filteredMainGroupQuestions.forEach(item => {
                             const row = document.createElement('tr');
-                            row.innerHTML = `<td style="word-wrap: break-word; max-width: 200px;">${item.identifier}</td><td>${parentGroup.title}</td><td>${item.title}</td><td>${filterType === 'all' && item.required_rule !== 'always' ? 'Not Required' : 'Required'}</td>`;
+                            row.innerHTML = `
+                                <td style="word-wrap: break-word; max-width: 200px;">${item.identifier}</td>
+                                <td>${parentGroup.title}</td>
+                                <td>${item.title}</td>
+                                <td>${filterType === 'all' && item.required_rule !== 'always' ? 'Not Required' : 'Required'}</td>
+                                <td>${item.hint || 'No Hint For This Field'}</td>
+                            `;
                             tbody.appendChild(row);
                         });
 
                         totalFields += filteredMainGroupQuestions.length;
                     }
 
-                    // Filter subgroup questions
-                    const subGroups = parentGroup.children.filter(item => item.children);
+                    // Filter subgroup questions (excluding deficiencies)
+                    const subGroups = parentGroup.children.filter(item => item.children && !item.title.toLowerCase().includes('deficiencies'));
                     subGroups.forEach(childGroup => {
                         const filteredData = childGroup.children.filter(item => {
                             return filterType === 'all' || item.required_rule === 'always';
@@ -103,14 +109,20 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (!parentGroupAdded) {
                                 const groupRow = document.createElement('tr');
                                 groupRow.classList.add('table-success'); // Apply the Bootstrap success color
-                                groupRow.innerHTML = `<td colspan="4"><strong>${parentGroup.title}</strong></td>`;
+                                groupRow.innerHTML = `<td colspan="5"><strong>${parentGroup.title}</strong></td>`;
                                 tbody.appendChild(groupRow);
                                 parentGroupAdded = true;
                             }
 
                             filteredData.forEach(item => {
                                 const row = document.createElement('tr');
-                                row.innerHTML = `<td style="word-wrap: break-word; max-width: 200px;">${item.identifier}</td><td>${parentGroup.title} / ${childGroup.title}</td><td>${item.title}</td><td>${filterType === 'all' && item.required_rule !== 'always' ? 'Not Required' : 'Required'}</td>`;
+                                row.innerHTML = `
+                                    <td style="word-wrap: break-word; max-width: 200px;">${item.identifier}</td>
+                                    <td>${parentGroup.title} / ${childGroup.title}</td>
+                                    <td>${item.title}</td>
+                                    <td>${filterType === 'all' && item.required_rule !== 'always' ? 'Not Required' : 'Required'}</td>
+                                    <td>${item.hint || 'No Hint For This Field'}</td>
+                                `;
                                 tbody.appendChild(row);
                             });
 
@@ -130,41 +142,53 @@ document.addEventListener('DOMContentLoaded', () => {
     function exportToExcel() {
         const rows = [];
         const filterType = document.getElementById('filter-type').value;
-
+    
         if (jsonData.children) {
             jsonData.children.forEach(parentGroup => {
+                if (parentGroup.title.toLowerCase().includes('deficiencies')) {
+                    // Skip this parent group if it's related to deficiencies
+                    return;
+                }
+    
                 if (parentGroup.children) {
                     // Main group questions
                     const mainGroupQuestions = parentGroup.children.filter(item => !item.children);
                     const filteredMainGroupQuestions = mainGroupQuestions.filter(item => {
                         return filterType === 'all' || item.required_rule === 'always';
                     });
-
+    
                     if (filteredMainGroupQuestions.length > 0) {
                         filteredMainGroupQuestions.forEach(item => {
                             rows.push({
                                 group: parentGroup.title,
                                 identifier: item.identifier,
                                 title: item.title,
-                                required_rule: filterType === 'all' && item.required_rule !== 'always' ? 'Not Required' : 'Required'
+                                required_rule: filterType === 'all' && item.required_rule !== 'always' ? 'Not Required' : 'Required',
+                                hint: item.hint || 'No Hint For This Field'
                             });
                         });
                     }
-
+    
                     // Subgroup questions
                     const subGroups = parentGroup.children.filter(item => item.children);
                     subGroups.forEach(childGroup => {
+                        if (childGroup.title.toLowerCase().includes('deficiencies')) {
+                            // Skip this subgroup if it's related to deficiencies
+                            return;
+                        }
+    
                         const filteredData = childGroup.children.filter(item => {
                             return filterType === 'all' || item.required_rule === 'always';
                         });
-
+    
                         if (filteredData.length > 0) {
                             filteredData.forEach(item => {
                                 rows.push({
                                     group: `${parentGroup.title} / ${childGroup.title}`,
                                     identifier: item.identifier,
                                     title: item.title,
-                                    required_rule: filterType === 'all' && item.required_rule !== 'always' ? 'Not Required' : 'Required'
+                                    required_rule: filterType === 'all' && item.required_rule !== 'always' ? 'Not Required' : 'Required',
+                                    hint: item.hint || 'No Hint For This Field'
                                 });
                             });
                         }
@@ -172,25 +196,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-
+    
         if (rows.length === 0) {
             alert('No data to export');
             return;
         }
-
-        const worksheet = XLSX.utils.json_to_sheet(rows, { header: ["group", "identifier", "title", "required_rule"] });
-
+    
+        const worksheet = XLSX.utils.json_to_sheet(rows, { header: ["group", "identifier", "title", "required_rule", "hint"] });
+    
         // Create a new workbook and append the worksheet
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, jsonTitle);
-
+    
         // Set column widths for better readability
-        worksheet['!cols'] = [{ wpx: 200 }, { wpx: 150 }, { wpx: 200 }, { wpx: 150 }];
-
+        worksheet['!cols'] = [{ wpx: 200 }, { wpx: 150 }, { wpx: 200 }, { wpx: 150 }, { wpx: 250 }];
+    
         // Write the workbook to a file
         XLSX.writeFile(workbook, 'filtered_data.xlsx');
     }
-
+    
     // Function to run a script
     function runScript() {
         // Example script content
